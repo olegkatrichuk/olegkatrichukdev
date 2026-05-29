@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "../globals.css";
 import { site } from "@/lib/site";
@@ -145,6 +146,14 @@ export default async function LocaleLayout({
         <SiteHeader locale={locale as Locale} t={t} />
         <main className="flex-1">{children}</main>
         <SiteFooter locale={locale as Locale} t={t} />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            src="https://analytics.getpetzone.com/script.js"
+            data-website-id="a7db4eb7-1bc2-4052-8e99-c4170c3b2d77"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

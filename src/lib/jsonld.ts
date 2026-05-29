@@ -1,6 +1,7 @@
 import { site } from "./site";
 import { type Locale, defaultLocale } from "./i18n";
 import type { CaseStudyMeta } from "./content";
+import type { JournalEntryMeta } from "./journal";
 
 const author = { "@type": "Person" as const, name: site.name, url: site.url };
 
@@ -152,4 +153,40 @@ export function itemListSchema(
 // even though Next will also auto-discover the colocated file.
 export function ogImageUrl(locale: Locale = defaultLocale, path = "") {
   return `${site.url}/${locale}${path}/opengraph-image`;
+}
+
+export function blogSchema(locale: Locale, entries: JournalEntryMeta[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${site.name} — Journal`,
+    url: `${site.url}/${locale}/journal`,
+    inLanguage: locale,
+    author,
+    blogPost: entries.map((e) => ({
+      "@type": "BlogPosting",
+      headline: e.title,
+      url: `${site.url}/${locale}/journal/${e.slug}`,
+      datePublished: e.date,
+      ...(e.tags?.length ? { keywords: e.tags.join(", ") } : {}),
+    })),
+  };
+}
+
+export function articleSchema(e: JournalEntryMeta, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: e.title,
+    description: e.summary,
+    url: `${site.url}/${locale}/journal/${e.slug}`,
+    datePublished: e.date,
+    dateModified: e.date,
+    inLanguage: locale,
+    author,
+    publisher: author,
+    mainEntityOfPage: `${site.url}/${locale}/journal/${e.slug}`,
+    ...(e.tags?.length ? { keywords: e.tags.join(", ") } : {}),
+    image: `${site.url}/${locale}/journal/${e.slug}/opengraph-image`,
+  };
 }

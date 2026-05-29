@@ -1,0 +1,106 @@
+---
+title: "Multi-tenant from day one — the ADR every solo founder skips"
+summary: "If your SaaS could ever onboard a second customer, every table needs a tenant column from the first migration. Bolting it on later is a rewrite, not a refactor."
+date: 2026-05-29
+tags: ["SaaS", ".NET", "PostgreSQL", "Architecture"]
+draft: false
+---
+
+There is a moment in every solo-built SaaS where you write the first
+`CREATE TABLE` and tell yourself you'll add the tenant column later, when
+you actually have a second customer. You won't. That decision compounds
+through every join, every query, every cache key — and by the time you
+notice, "later" is a four-week rewrite that ships nothing new.
+
+I made this choice up-front on [Futura AI][futura] (an embeddable AI
+assistant for beauty salons): every table got a `tenant_id` from the first
+migration, and there was a short ADR explaining why before there was a
+schema to apply it to.
+
+## What multi-tenant on day one actually costs
+
+The price is two extra lines of code per table and one filter per query.
+That is it.
+
+```csharp
+public sealed class Conversation
+{
+    public Guid Id { get; init; }
+    public Guid TenantId { get; init; }  // <-- this
+    // ... everything else
+}
+
+modelBuilder.Entity<Conversation>(b =>
+{
+    b.HasIndex(x => new { x.TenantId, x.CreatedAt }); // <-- and this
+    b.HasQueryFilter(x => x.TenantId == _tenantContext.Current);
+});
+```
+
+`HasQueryFilter` in EF Core means you write `db.Conversations.Where(...)`
+the same way you always do; the tenant scope is invisible at the call
+site, and a missing filter becomes a compile-time concern (no tenant
+context resolves means no records), not a data-leak bug at 2am.
+
+## What bolting it on later actually costs
+
+If you skip it on day one, every table you've written needs a column, a
+backfill, an index, and a query filter — all coordinated through one
+production migration that has to happen with zero downtime. You will also
+discover that:
+
+- Your foreign keys cross tenant boundaries (a `user_id` referenced from a
+  table that has no `tenant_id` of its own).
+- Your caches are keyed by entity id with no tenant prefix, so the first
+  cross-tenant read after the migration serves the wrong record.
+- Your background jobs query "all conversations older than 30 days" with
+  no tenant scope at all.
+
+None of these are technically hard. They are all *coordination* hard, and
+they all surface in a production environment that already has paying
+customers in it. The window to fix them quietly is gone.
+
+## The ADR fits on a napkin
+
+You don't need a long document. You need a written record of *why* the
+choice was made, so future-you (or whoever inherits this) doesn't undo it
+in a refactor.
+
+```
+# ADR-001: Every table is scoped by tenant_id from day one
+
+Status: Accepted
+Date:   2025-12-XX
+
+Decision
+  Every persistable entity carries a `tenant_id` column. Queries are
+  scoped by EF Core query filters tied to an ambient ITenantContext.
+
+Why
+  Bolting multi-tenancy on after the first paying customer means a
+  coordinated production migration across every table and a real risk
+  of cross-tenant data leaks. The cost of doing it up front is one
+  column and one filter per entity.
+
+Consequences
+  - Local seed data needs a default tenant.
+  - Integration tests must set ITenantContext explicitly.
+  - One global migration step verifies no entity is missing the column.
+```
+
+That's the whole document. It takes ten minutes to write and saves a
+quarter of engineering time the day you need it.
+
+## Where this bites if you don't do it
+
+I have rescued projects that skipped this. The pattern is always the
+same: a working app, paying customers, and a backlog item called "support
+multiple workspaces" that has been kicked for six months because it
+secretly means rewriting every query.
+
+If your product could ever have a second customer — and most B2B SaaS
+could — the cheapest day to add `tenant_id` is the day you write your
+first `CREATE TABLE`. Every day after that is more expensive than the
+last.
+
+[futura]: /en/work/futura-ai

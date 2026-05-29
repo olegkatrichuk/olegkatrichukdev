@@ -2,12 +2,14 @@
 // summary of the site. Emerging standard, cheap to add.
 import { site } from "@/lib/site";
 import { getCaseStudies } from "@/lib/content";
+import { getJournalEntries } from "@/lib/journal";
 import { defaultLocale } from "@/lib/i18n";
 
 export const dynamic = "force-static";
 
 export async function GET() {
   const work = getCaseStudies();
+  const journal = getJournalEntries();
   const lines = [
     `# ${site.name}`,
     ``,
@@ -24,6 +26,17 @@ export async function GET() {
       return `- [${c.title}](${url})${live}\n  ${c.summary}`;
     }),
     ``,
+    ...(journal.length
+      ? [
+          `## Journal`,
+          ``,
+          ...journal.map((e) => {
+            const url = `${site.url}/${defaultLocale}/journal/${e.slug}`;
+            return `- [${e.title}](${url}) — ${e.date}\n  ${e.summary}`;
+          }),
+          ``,
+        ]
+      : []),
     `## Stack`,
     ``,
     `C# / .NET, TypeScript, React & Next.js, PostgreSQL, Docker.`,

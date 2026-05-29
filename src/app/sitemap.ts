@@ -4,8 +4,10 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { locales } from "@/lib/i18n";
 import { getCaseStudies } from "@/lib/content";
+import { getJournalEntries } from "@/lib/journal";
 
 const WORK_DIR = path.join(process.cwd(), "src/content/work");
+const JOURNAL_DIR = path.join(process.cwd(), "src/content/journal");
 
 // Stable mtime for a case-study slug: max of the base file and any
 // per-locale override. Falls back to "now" if the file vanished.
@@ -22,6 +24,24 @@ function caseStudyMtime(slug: string): Date {
       if (stat.mtimeMs > latest) latest = stat.mtimeMs;
     } catch {
       // ignore missing locale files
+    }
+  }
+  return latest ? new Date(latest) : new Date();
+}
+
+function journalEntryMtime(slug: string): Date {
+  const candidates = [
+    path.join(JOURNAL_DIR, `${slug}.mdx`),
+    path.join(JOURNAL_DIR, `${slug}.uk.mdx`),
+    path.join(JOURNAL_DIR, `${slug}.ru.mdx`),
+  ];
+  let latest = 0;
+  for (const p of candidates) {
+    try {
+      const stat = fs.statSync(p);
+      if (stat.mtimeMs > latest) latest = stat.mtimeMs;
+    } catch {
+      /* ignore */
     }
   }
   return latest ? new Date(latest) : new Date();
@@ -54,17 +74,24 @@ function staticPagesMtime(): Date {
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticMtime = staticPagesMtime();
   const cases = getCaseStudies();
+  const journal = getJournalEntries();
 
   const entries: { path: string; lastModified: Date; priority: number }[] = [
     { path: "", lastModified: staticMtime, priority: 1.0 },
     { path: "/work", lastModified: staticMtime, priority: 0.9 },
     { path: "/why", lastModified: staticMtime, priority: 0.8 },
+    { path: "/journal", lastModified: staticMtime, priority: 0.8 },
     { path: "/about", lastModified: staticMtime, priority: 0.6 },
     { path: "/contact", lastModified: staticMtime, priority: 0.6 },
     ...cases.map((c) => ({
       path: `/work/${c.slug}`,
       lastModified: caseStudyMtime(c.slug),
       priority: 0.8,
+    })),
+    ...journal.map((e) => ({
+      path: `/journal/${e.slug}`,
+      lastModified: journalEntryMtime(e.slug),
+      priority: 0.7,
     })),
   ];
 

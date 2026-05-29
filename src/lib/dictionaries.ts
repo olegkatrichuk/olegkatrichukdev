@@ -8,7 +8,13 @@ const en = {
     "Full-stack engineer building production web applications with .NET, TypeScript and React for clients in the US, EU, Ukraine and the CIS.",
   locationLine: "Remote — working with clients in the US, EU, Ukraine & the CIS",
 
-  nav: { work: "Work", why: "Why a site", about: "About", contact: "Contact" },
+  nav: {
+    work: "Work",
+    why: "Why a site",
+    journal: "Journal",
+    about: "About",
+    contact: "Contact",
+  },
 
   common: {
     bookCall: "Let's talk",
@@ -152,6 +158,18 @@ const en = {
       "Tell me what you're trying to build. I'll tell you straight whether a site is the right move.",
   },
 
+  journal: {
+    title: "Journal",
+    intro:
+      "Notes on shipping software — .NET, TypeScript, multi-tenant SaaS, and the boring parts that make systems last.",
+    empty: "No entries yet — first post coming soon.",
+    minRead: "min read",
+    backToIndex: "Back to journal",
+    ctaTitle: "Building something similar?",
+    ctaBody:
+      "Tell me what you're working on. I take on a small number of projects at a time.",
+  },
+
   notFound: {
     title: "This page doesn't exist",
     body: "The link may be old or mistyped.",
@@ -169,7 +187,13 @@ const uk: Dictionary = {
     "Full-stack інженер, який створює продакшн-вебзастосунки на .NET, TypeScript і React для клієнтів зі США, ЄС, України та СНД.",
   locationLine: "Віддалено — працюю з клієнтами зі США, ЄС, України та СНД",
 
-  nav: { work: "Роботи", why: "Навіщо сайт", about: "Про мене", contact: "Контакти" },
+  nav: {
+    work: "Роботи",
+    why: "Навіщо сайт",
+    journal: "Журнал",
+    about: "Про мене",
+    contact: "Контакти",
+  },
 
   common: {
     bookCall: "Поспілкуймося",
@@ -313,6 +337,18 @@ const uk: Dictionary = {
       "Розкажіть, що ви будуєте. Скажу прямо, чи сайт — правильний крок.",
   },
 
+  journal: {
+    title: "Журнал",
+    intro:
+      "Нотатки про випуск ПЗ — .NET, TypeScript, multi-tenant SaaS і нудні частини, що тримають системи живими.",
+    empty: "Поки що порожньо — перший допис скоро.",
+    minRead: "хв читання",
+    backToIndex: "Назад до журналу",
+    ctaTitle: "Будуєте щось подібне?",
+    ctaBody:
+      "Розкажіть, над чим працюєте. Беру невелику кількість проєктів одночасно.",
+  },
+
   notFound: {
     title: "Цієї сторінки не існує",
     body: "Можливо, посилання застаріле або з помилкою.",
@@ -328,7 +364,13 @@ const ru: Dictionary = {
     "Full-stack инженер, создающий продакшн-веб-приложения на .NET, TypeScript и React для клиентов из США, ЕС, Украины и СНГ.",
   locationLine: "Удалённо — работаю с клиентами из США, ЕС, Украины и СНГ",
 
-  nav: { work: "Работы", why: "Зачем сайт", about: "Обо мне", contact: "Контакты" },
+  nav: {
+    work: "Работы",
+    why: "Зачем сайт",
+    journal: "Журнал",
+    about: "Обо мне",
+    contact: "Контакты",
+  },
 
   common: {
     bookCall: "Давайте пообщаемся",
@@ -470,6 +512,18 @@ const ru: Dictionary = {
     ctaTitle: "Не уверены, даст ли сайт результат именно вам?",
     ctaBody:
       "Расскажите, что вы строите. Скажу прямо, сайт ли — правильный шаг.",
+  },
+
+  journal: {
+    title: "Журнал",
+    intro:
+      "Заметки о выпуске ПО — .NET, TypeScript, multi-tenant SaaS и скучные части, что держат системы живыми.",
+    empty: "Пока пусто — первая запись скоро.",
+    minRead: "мин чтения",
+    backToIndex: "Назад к журналу",
+    ctaTitle: "Строите что-то похожее?",
+    ctaBody:
+      "Расскажите, над чем работаете. Беру небольшое число проектов одновременно.",
   },
 
   notFound: {
