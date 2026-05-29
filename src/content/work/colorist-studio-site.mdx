@@ -1,0 +1,52 @@
+---
+title: "A portfolio site that books clients for a hair colorist"
+client: "Zvezdochka — hair-coloring studio, Odessa"
+summary: "An image-heavy, multilingual portfolio and booking site for a professional colorist — fast galleries served from object storage, reviews, courses, and direct booking channels."
+stack: ["Next.js", "TypeScript", "i18n", "Cloudflare R2"]
+result: "An owned, multilingual home that turns Instagram traffic into bookings"
+liveUrl: "https://odessacolorist.com"
+year: 2026
+order: 110
+draft: false
+---
+
+## The problem
+
+For a hair colorist, the work *is* the marketing — clients choose based on
+before/after photos. The studio's reach was Instagram-only: great content,
+but no owned home that ranks on Google, works in three languages
+(English / Ukrainian / Russian), and turns a browser into a booking. An
+image-heavy site also risks being slow, which kills exactly the visitors
+you want.
+
+## My approach
+
+- Built a **portfolio-first site**: galleries, services, courses, video and
+  client reviews — structured so the work is the hero.
+- Served all media from **object storage (Cloudflare R2)** so heavy
+  before/after imagery loads fast and cheaply.
+- Made it **trilingual** (en / uk / ru) to match the real client base.
+- Put **booking front and centre** — direct channels (phone, Telegram,
+  WhatsApp) one tap away on every page.
+
+## Stack & why
+
+- **Next.js** — server-rendered, indexable pages so the studio finally has
+  an owned property that ranks, not just a social feed.
+- **Cloudflare R2 for media** — a colorist's site is mostly photos;
+  offloading them to object storage keeps pages fast and hosting cheap.
+- **i18n from the start** — retrofitting three languages later is far more
+  expensive than designing for it up front.
+
+## The result
+
+- A professional, fast home that converts profile-stalkers into bookings
+  instead of leaving them in Instagram DMs.
+- Multilingual reach matching the actual client base.
+
+## What was hard
+
+Image-heavy sites are usually slow, and slow kills a portfolio. The work was
+in the media pipeline — storage, sizing and delivery via R2 plus Next.js
+image optimization — so the gallery stays sharp on a phone without the page
+crawling. That balance, quality vs. speed, was the whole game here.

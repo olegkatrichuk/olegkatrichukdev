@@ -1,0 +1,68 @@
+---
+title: "A pet-adoption platform that search engines can actually read"
+client: "PetZone — animal-help platform"
+summary: "A full-stack adoption platform: .NET clean-architecture backend, a React SPA in 6 languages, and a prerender pipeline so a single-page app still ranks in Google."
+stack: [".NET", "Clean Architecture", "React", "TypeScript", "Vite", "i18next", "PostgreSQL"]
+result: "An SPA that search engines can finally crawl — server-readable adoption pages in 6 languages"
+liveUrl: "https://getpetzone.com"
+year: 2025
+order: 100
+draft: false
+---
+
+## The problem
+
+PetZone helps animals find homes — but adoption only happens if people can
+*find* the listings. The app was built as a client-rendered React single-page
+app, which is great for UX and terrible for SEO: search-engine crawlers were
+served an empty HTML shell, so adoptable-pet pages barely ranked. On top of
+that the audience is multilingual (the platform ships in 6 languages), which
+multiplies the SEO surface and the chance of getting it wrong.
+
+## My approach
+
+I treated it as two separate problems — a solid backend, and discoverability
+on top of an SPA — and shipped them in slices:
+
+1. **A clean-architecture .NET backend** split into Domain, Use Cases,
+   Infrastructure, Contracts and API layers, with a dedicated notification
+   microservice. Domain and integration test suites so behaviour is pinned
+   down, not hoped for.
+2. **SEO landing pages** — species-level pages (dogs, cats, …) and richer pet
+   DTOs (species/breed names) so each listing has real, indexable content
+   instead of an ID.
+3. **A prerender pipeline** — a build step that renders the key routes to
+   static HTML and generates sitemaps, so crawlers get fully-formed pages
+   while users still get the fast SPA.
+
+## Stack & why
+
+- **Clean architecture in .NET** — the domain (animals, listings,
+  volunteers) has real rules; isolating it from infrastructure kept those
+  rules testable and the API thin.
+- **React + Vite SPA with i18next** — fast, app-like UX across 6 locales
+  without a heavyweight framework.
+- **Prerender + sitemaps instead of a full SSR rewrite** — got the SEO
+  benefit without throwing away the working SPA or doubling the hosting
+  complexity. The pragmatic choice beat the "correct" one.
+- **In-memory caching over Redis** — removed an entire piece of
+  infrastructure once profiling showed an external cache wasn't paying for
+  itself at this scale.
+
+## The result
+
+- Adoptable-pet and species pages are now server-readable in all supported
+  languages — crawlers see content, not an empty shell.
+- The backend has test coverage at the domain and integration level, so
+  changes ship with confidence.
+- Infrastructure got *simpler* over time (Redis removed), not more complex.
+
+## What was hard
+
+SEO on a client-rendered SPA is the classic trap: the "real" fix is a full
+server-side-rendering rewrite, which here would have meant months and a
+riskier deploy. The hard part was resisting that and instead building a
+prerender step that gives crawlers static HTML per route *per language*
+without forking the codebase into "SSR mode" and "SPA mode." Getting the
+multilingual sitemaps and canonical URLs right was the fiddly part — get it
+wrong and Google sees six copies of the same page.

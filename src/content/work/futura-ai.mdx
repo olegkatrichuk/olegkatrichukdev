@@ -1,0 +1,69 @@
+---
+title: "An AI assistant beauty salons embed in two minutes"
+client: "Futura AI — own SaaS product"
+summary: "A multi-tenant SaaS: an embeddable AI chat widget that answers a beauty salon's clients 24/7 — a ~3 KB loader, an iframe widget app, a .NET backend, and Claude with retrieval over each tenant's own services and prices."
+stack: [".NET", "Next.js", "TypeScript", "Claude API", "pgvector", "PostgreSQL", "Multi-tenant SaaS"]
+result: "A live product (beautyfutura.com) — salons add an AI assistant with one script tag, no integration work"
+liveUrl: "https://beautyfutura.com"
+year: 2026
+order: 105
+draft: false
+---
+
+## The problem
+
+Beauty salons drown in repetitive messages — *how much is balayage, are you
+open Sunday, will this work on coloured hair.* Owners spend hours answering
+the same questions instead of doing the work. Off-the-shelf chatbots don't
+solve it: they're generic, they don't know *this* salon's services and
+prices, and wiring one up is an IT project a non-technical owner will never
+finish. The bar was an assistant that knows the specific business — and that
+the owner can install themselves.
+
+## My approach
+
+I built Futura as a multi-tenant SaaS, in layers:
+
+- A tiny **widget loader** (~3 KB, IIFE bundle) — the only thing a salon
+  pastes into their site.
+- An **iframe widget app** (Next.js) — sandboxed from the host page's CSS
+  and JavaScript.
+- A **.NET backend** — tenants, conversations and the AI orchestration.
+- **Claude with retrieval** (pgvector) over each tenant's own catalog, so
+  answers are grounded in real services and prices, not invented.
+- **Multi-tenancy from day one** — every record scoped to a tenant, decided
+  in an ADR before the first table existed.
+
+## Stack & why
+
+- **Embed = loader + iframe, not an SDK** — a salon pastes one `<script>`;
+  the iframe sandboxes the widget so it can't break, or be broken by, the
+  host site's styles.
+- **.NET 10 clean architecture** — Domain / Application / Infrastructure /
+  Api; tenant and conversation rules are real domain logic, kept testable.
+- **Claude Sonnet 4.5 + Haiku 4.5** — Sonnet for real answers, Haiku for the
+  cheap path. Cost control is a feature when the plan starts at $0/mo.
+- **pgvector on the same Postgres** — retrieval grounded in each tenant's
+  catalog without operating a separate vector database.
+- **Hetzner for the API, Vercel + Cloudflare R2 for the edge** — the
+  stateful backend stays cheap on a VPS; the loader and widget are served
+  fast from the edge.
+
+## The result
+
+- A live product at **beautyfutura.com** — a salon installs the assistant
+  with a single script tag, in about two minutes, with no integration work.
+- The assistant answers in three languages (English, Ukrainian, Russian),
+  handles photo and voice messages, and hands off to a human when it should.
+- Architecture that scales per tenant: a new salon is a new row, not a new
+  deployment.
+
+## What was hard
+
+Two hard parts. First, the embed: a widget that loads on *someone else's*
+site has to stay invisible until needed, be immune to their CSS, and stay
+tiny — hence a ~3 KB loader plus an iframe instead of a heavy SDK. Second,
+grounding: an assistant that *guesses* a salon's prices is worse than no
+assistant. The real work was the retrieval layer — getting Claude to answer
+strictly from each tenant's own catalog, and to say "let me connect you with
+the team" instead of inventing an answer.
