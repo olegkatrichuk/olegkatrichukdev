@@ -8,6 +8,7 @@ const MAX_MESSAGE = 5000;
 const MIN_MESSAGE = 10;
 
 const apiKey = process.env.RESEND_API_KEY;
+const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 // Resend requires a verified domain in production. `onboarding@resend.dev`
 // works only for testing and only delivers to the account owner.
 const from = process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>";
@@ -47,6 +48,36 @@ function isSameOrigin(req: Request): boolean {
   return false;
 }
 
+// Verifies a Turnstile token with Cloudflare. Returns true on success
+// (or when no secret is configured — meaning Turnstile is disabled).
+async function verifyTurnstile(
+  token: string,
+  remoteIp: string | null,
+): Promise<boolean> {
+  if (!turnstileSecret) return true; // not configured → skip
+  if (!token) return false;
+  try {
+    const form = new URLSearchParams();
+    form.set("secret", turnstileSecret);
+    form.set("response", token);
+    if (remoteIp) form.set("remoteip", remoteIp);
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        body: form,
+      },
+    );
+    if (!res.ok) return false;
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch (err) {
+    console.error("[contact] turnstile verify failed", err);
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
   if (!isSameOrigin(req)) {
     return NextResponse.json({ code: "forbidden" }, { status: 403 });
@@ -70,6 +101,7 @@ export async function POST(req: Request) {
     email,
     message,
     locale,
+    turnstileToken,
     // Honeypot: real users never fill this hidden field. Bots usually do.
     // We accept-and-discard so the bot thinks it succeeded.
     company,
@@ -77,6 +109,17 @@ export async function POST(req: Request) {
 
   if (typeof company === "string" && company.trim()) {
     return NextResponse.json({ ok: true });
+  }
+
+  // Turnstile must pass before we spend any cycles on Resend.
+  const remoteIp =
+    req.headers.get("cf-connecting-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    null;
+  const tokenStr =
+    typeof turnstileToken === "string" ? turnstileToken : "";
+  if (!(await verifyTurnstile(tokenStr, remoteIp))) {
+    return NextResponse.json({ code: "challenge_failed" }, { status: 403 });
   }
 
   if (
