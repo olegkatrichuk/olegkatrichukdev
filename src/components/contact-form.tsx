@@ -5,7 +5,13 @@ import type { Dictionary } from "@/lib/dictionaries";
 
 type State = "idle" | "sending" | "sent" | "error";
 
-export function ContactForm({ t }: { t: Dictionary["contact"] }) {
+export function ContactForm({
+  t,
+  locale,
+}: {
+  t: Dictionary["contact"];
+  locale?: string;
+}) {
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
 
@@ -20,6 +26,9 @@ export function ContactForm({ t }: { t: Dictionary["contact"] }) {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement)
         .value,
+      // Honeypot — must stay empty.
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
+      locale,
     };
 
     try {
@@ -52,11 +61,39 @@ export function ContactForm({ t }: { t: Dictionary["contact"] }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      {/* Honeypot — hidden from real users, attractive to bots. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor="company">Company (do not fill)</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium">
           {t.name}
         </label>
-        <input id="name" name="name" required className={`mt-1 ${field}`} />
+        <input
+          id="name"
+          name="name"
+          required
+          maxLength={100}
+          autoComplete="name"
+          className={`mt-1 ${field}`}
+        />
       </div>
       <div>
         <label htmlFor="email" className="block text-sm font-medium">
@@ -67,6 +104,8 @@ export function ContactForm({ t }: { t: Dictionary["contact"] }) {
           name="email"
           type="email"
           required
+          maxLength={320}
+          autoComplete="email"
           className={`mt-1 ${field}`}
         />
       </div>
@@ -78,6 +117,8 @@ export function ContactForm({ t }: { t: Dictionary["contact"] }) {
           id="message"
           name="message"
           required
+          minLength={10}
+          maxLength={5000}
           rows={5}
           className={`mt-1 ${field} resize-y`}
         />

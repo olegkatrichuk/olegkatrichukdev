@@ -55,7 +55,7 @@ export default async function ContactPage({
 
         <div className="mt-10 grid gap-12 sm:grid-cols-[1fr_auto]">
           <Reveal>
-            <ContactForm t={t.contact} />
+            <ContactForm t={t.contact} locale={locale} />
           </Reveal>
 
           <Reveal delay={0.08}>
