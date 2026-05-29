@@ -3,12 +3,18 @@ import { type Locale, defaultLocale } from "./i18n";
 import type { CaseStudyMeta } from "./content";
 import type { JournalEntryMeta } from "./journal";
 
-const author = { "@type": "Person" as const, name: site.name, url: site.url };
+const PERSON_ID = `${site.url}/#person`;
+
+// Reference to the canonical Person node (defined once in personSchema).
+// Using @id deduplicates the entity across every schema block so Google
+// attributes all content to one author entity.
+const author = { "@id": PERSON_ID };
 
 export function personSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": PERSON_ID,
     name: site.name,
     url: site.url,
     email: `mailto:${site.email}`,
@@ -48,6 +54,12 @@ export function websiteSchema() {
   };
 }
 
+const serviceDescription: Record<Locale, string> = {
+  en: "Freelance full-stack web development with .NET, TypeScript, React & Next.js. Solo engineer, end-to-end delivery, paid after launch.",
+  uk: "Фриланс full-stack веб-розробка на .NET, TypeScript, React і Next.js. Один інженер, наскрізна реалізація, оплата після запуску.",
+  ru: "Фриланс full-stack веб-разработка на .NET, TypeScript, React и Next.js. Один инженер, сквозная реализация, оплата после запуска.",
+};
+
 export function professionalServiceSchema(locale: Locale) {
   return {
     "@context": "https://schema.org",
@@ -55,9 +67,8 @@ export function professionalServiceSchema(locale: Locale) {
     name: `${site.name} — Full-stack engineering`,
     url: `${site.url}/${locale}`,
     image: `${site.url}/${locale}/opengraph-image`,
-    description:
-      "Freelance full-stack web development with .NET, TypeScript, React & Next.js. Solo engineer, end-to-end delivery, paid after launch.",
-    provider: { "@type": "Person", name: site.name, url: site.url },
+    description: serviceDescription[locale] ?? serviceDescription.en,
+    provider: { "@id": PERSON_ID },
     areaServed: [
       { "@type": "Country", name: "United States" },
       { "@type": "Country", name: "Ukraine" },
@@ -181,7 +192,7 @@ export function articleSchema(e: JournalEntryMeta, locale: Locale) {
     description: e.summary,
     url: `${site.url}/${locale}/journal/${e.slug}`,
     datePublished: e.date,
-    dateModified: e.date,
+    dateModified: e.updatedAt,
     inLanguage: locale,
     author,
     publisher: author,
