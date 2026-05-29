@@ -32,7 +32,7 @@ const en = {
     principles: [
       {
         title: "Scope first",
-        body: "We agree on what success looks like before any code is written. No open-ended billing.",
+        body: "Scope and price are agreed in writing before any code is written — and you pay after the site is live and you're happy with it, not before.",
       },
       {
         title: "Ship in slices",
@@ -134,6 +134,10 @@ const en = {
         q: "I'm not technical — I'd never maintain it",
         a: "You don't have to. You hire one engineer end-to-end, get a working site and a clean hand-off — and I stay available for updates, SEO and promotion if you need it. Day-to-day content changes are usually content, not code.",
       },
+      {
+        q: "How does pricing and payment work?",
+        a: "Scope and price are agreed in writing before anything starts — no creeping invoice. You pay after the site is live and you're happy with it, not before. No upfront deposit.",
+      },
     ],
     examplesTitle: "Real examples",
     examplesIntro:
@@ -184,7 +188,7 @@ const uk: Dictionary = {
     principles: [
       {
         title: "Спочатку обсяг",
-        body: "Узгоджуємо, що таке успіх, ще до першого рядка коду. Жодних відкритих рахунків.",
+        body: "Обсяг і ціна узгоджуються письмово до першого рядка коду — а оплата після того, як сайт у проді і ви ним задоволені, а не до.",
       },
       {
         title: "Постачання частинами",
@@ -286,6 +290,10 @@ const uk: Dictionary = {
         q: "Я не технічний — я ж не зможу його підтримувати",
         a: "І не треба. Ви наймаєте одного інженера на весь цикл, отримуєте робочий сайт і чисту передачу — а я залишаюсь доступним для оновлень, SEO та просування, якщо потрібна допомога. Щоденні зміни контенту — це контент, а не код.",
       },
+      {
+        q: "Як працює оплата і вартість?",
+        a: "Обсяг і ціна узгоджуються письмово до початку роботи — жодних рахунків, що ростуть. Оплата після того, як сайт у проді й ви ним задоволені, а не до. Без передоплати.",
+      },
     ],
     examplesTitle: "Реальні приклади",
     examplesIntro:
@@ -334,7 +342,7 @@ const ru: Dictionary = {
     principles: [
       {
         title: "Сначала объём",
-        body: "Договариваемся, что такое успех, до первой строки кода. Никаких открытых счетов.",
+        body: "Объём и цена согласуются письменно до первой строки кода — а оплата после того, как сайт в проде и вы им довольны, а не до.",
       },
       {
         title: "Поставка частями",
@@ -435,6 +443,10 @@ const ru: Dictionary = {
       {
         q: "Я не технический — я же не смогу его поддерживать",
         a: "И не нужно. Вы нанимаете одного инженера на весь цикл, получаете рабочий сайт и чистую передачу — а я остаюсь доступным для обновлений, SEO и продвижения, если нужна помощь. Ежедневные изменения контента — это контент, а не код.",
+      },
+      {
+        q: "Как работает оплата и стоимость?",
+        a: "Объём и цена согласуются письменно до начала работы — никаких растущих счетов. Оплата после того, как сайт в проде и вы им довольны, а не до. Без предоплаты.",
       },
     ],
     examplesTitle: "Реальные примеры",
