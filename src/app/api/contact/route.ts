@@ -190,38 +190,181 @@ function autoReplySubject(locale: string | null): string {
   }
 }
 
-function autoReplyText(name: string, locale: string | null): string {
-  switch (locale) {
-    case "uk":
-      return `Привіт ${name},\n\nПовідомлення отримав — відповім протягом доби. Якщо швидше — пишіть у Telegram: ${site.telegram}.\n\n— ${site.name}`;
-    case "ru":
-      return `Привет ${name},\n\nСообщение получил — отвечу в течение суток. Если быстрее — пишите в Telegram: ${site.telegram}.\n\n— ${site.name}`;
-    default:
-      return `Hi ${name},\n\nThanks for reaching out — I'll get back to you within a day. If it's urgent, ping me on Telegram: ${site.telegram}.\n\n— ${site.name}`;
+type Copy = {
+  greet: (name: string) => string;
+  body: string;
+  fasterTitle: string;
+  fasterBody: string;
+  exploreTitle: string;
+  exploreWork: string;
+  exploreJournal: string;
+  signOff: string;
+  footer: string;
+};
+
+function getCopy(locale: string | null): Copy {
+  if (locale === "uk") {
+    return {
+      greet: (n) => `Привіт, ${n} 👋`,
+      body: "Отримав ваше повідомлення — повернуся з відповіддю протягом 24 годин. Зазвичай швидше.",
+      fasterTitle: "Потрібно швидше?",
+      fasterBody:
+        "Будь-який із каналів нижче доходить до мене швидше за email.",
+      exploreTitle: "Поки чекаєте",
+      exploreWork: "Вибрані проєкти",
+      exploreJournal: "Журнал",
+      signOff: "До зв'язку,",
+      footer: "Це підтвердження надіслано один раз. Більше листів не буде.",
+    };
   }
+  if (locale === "ru") {
+    return {
+      greet: (n) => `Привет, ${n} 👋`,
+      body: "Получил ваше сообщение — вернусь с ответом в течение 24 часов. Обычно быстрее.",
+      fasterTitle: "Нужно быстрее?",
+      fasterBody:
+        "Любой из каналов ниже доходит до меня быстрее email.",
+      exploreTitle: "Пока ждёте",
+      exploreWork: "Избранные проекты",
+      exploreJournal: "Журнал",
+      signOff: "До связи,",
+      footer: "Это подтверждение отправлено один раз. Больше писем не будет.",
+    };
+  }
+  return {
+    greet: (n) => `Hi ${n} 👋`,
+    body: "Got your message — I'll come back to you within 24 hours, usually sooner.",
+    fasterTitle: "Need to talk sooner?",
+    fasterBody: "Any of the channels below reach me faster than email.",
+    exploreTitle: "While you wait",
+    exploreWork: "Selected work",
+    exploreJournal: "Journal",
+    signOff: "Talk soon,",
+    footer: "This is a one-time confirmation. You won't receive more emails.",
+  };
+}
+
+function autoReplyText(name: string, locale: string | null): string {
+  const c = getCopy(locale);
+  const viber = "+380 68 908 0884";
+  return [
+    c.greet(name),
+    "",
+    c.body,
+    "",
+    `${c.fasterTitle} ${c.fasterBody}`,
+    `· Telegram: ${site.telegram}`,
+    `· Viber: ${viber}`,
+    `· Email: ${site.email}`,
+    "",
+    `${c.signOff}`,
+    `— ${site.name}`,
+    `  ${site.url}`,
+    "",
+    c.footer,
+  ].join("\n");
 }
 
 function autoReplyHtml(name: string, locale: string | null): string {
-  const body =
-    locale === "uk"
-      ? `Повідомлення отримав — відповім протягом доби. Якщо швидше — <a href="${site.telegram}" style="color:#4f46e5">пишіть у Telegram</a>.`
-      : locale === "ru"
-        ? `Сообщение получил — отвечу в течение суток. Если быстрее — <a href="${site.telegram}" style="color:#4f46e5">пишите в Telegram</a>.`
-        : `Thanks for reaching out — I'll get back to you within a day. If it's urgent, <a href="${site.telegram}" style="color:#4f46e5">ping me on Telegram</a>.`;
+  const c = getCopy(locale);
+  const safeName = escapeHtml(name);
+  const viberDisplay = "+380 68 908 0884";
+  const viberLink = "viber://chat?number=%2B380689080884";
+  const telLink = "tel:+380689080884";
 
-  const greet =
-    locale === "uk"
-      ? `Привіт ${escapeHtml(name)},`
-      : locale === "ru"
-        ? `Привет ${escapeHtml(name)},`
-        : `Hi ${escapeHtml(name)},`;
+  const accent = "#4f46e5";
+  const ink = "#111111";
+  const muted = "#6b7280";
+  const surface = "#f5f5f7";
+  const border = "#e5e5ea";
+
+  const channelButton = (label: string, sub: string, href: string) => `
+    <a href="${href}" style="display:block;text-decoration:none;border:1px solid ${border};border-radius:10px;padding:14px 16px;margin-bottom:8px;background:#ffffff">
+      <div style="font-size:14px;font-weight:600;color:${ink}">${label}</div>
+      <div style="font-size:12px;color:${muted};margin-top:2px">${sub}</div>
+    </a>`;
+
+  const linkChip = (label: string, href: string) => `
+    <a href="${href}" style="display:inline-block;text-decoration:none;color:${accent};border:1px solid ${border};border-radius:999px;padding:6px 12px;font-size:13px;margin-right:6px;margin-top:6px;background:#ffffff">
+      ${label} →
+    </a>`;
 
   return `<!doctype html>
-<html><body style="font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#111;line-height:1.55">
-  <div style="max-width:520px;margin:0 auto;padding:24px">
-    <p>${greet}</p>
-    <p>${body}</p>
-    <p style="margin-top:24px">— ${escapeHtml(site.name)}</p>
+<html lang="${locale ?? "en"}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>${escapeHtml(autoReplySubject(locale))}</title>
+</head>
+<body style="margin:0;padding:0;background:${surface};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:${ink};line-height:1.55">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0">
+    ${c.body}
   </div>
-</body></html>`;
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${surface};padding:32px 16px">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid ${border};border-radius:14px;overflow:hidden">
+          <tr>
+            <td style="background:${accent};height:4px;line-height:4px;font-size:0">&nbsp;</td>
+          </tr>
+          <tr>
+            <td style="padding:28px 28px 8px">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="vertical-align:middle">
+                    <div style="display:inline-block;width:36px;height:36px;background:${accent};border-radius:8px;color:#ffffff;font-weight:700;font-size:15px;text-align:center;line-height:36px">OK</div>
+                  </td>
+                  <td style="padding-left:12px;vertical-align:middle">
+                    <div style="font-size:15px;font-weight:600;color:${ink}">${escapeHtml(site.name)}</div>
+                    <div style="font-size:12px;color:${muted}">Full-stack engineer — .NET &amp; TypeScript</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 28px 4px">
+              <h1 style="margin:0;font-size:22px;font-weight:600;color:${ink};letter-spacing:-0.01em">${c.greet(safeName)}</h1>
+              <p style="margin:14px 0 0;font-size:15px;color:${ink}">${c.body}</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 28px 8px">
+              <div style="font-size:12px;font-weight:600;color:${muted};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">${c.fasterTitle}</div>
+              <p style="margin:0 0 12px;font-size:14px;color:${ink}">${c.fasterBody}</p>
+              ${channelButton("Telegram", "@Olegnewlife", site.telegram)}
+              ${channelButton("Viber", viberDisplay, viberLink)}
+              ${channelButton("Email", site.email, `mailto:${site.email}`)}
+              <div style="font-size:11px;color:${muted};margin-top:6px">
+                Viber: <a href="${telLink}" style="color:${muted};text-decoration:underline">${viberDisplay}</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 28px 8px">
+              <div style="font-size:12px;font-weight:600;color:${muted};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">${c.exploreTitle}</div>
+              ${linkChip(c.exploreWork, `${site.url}/${locale ?? "en"}/work`)}
+              ${linkChip(c.exploreJournal, `${site.url}/${locale ?? "en"}/journal`)}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 28px 28px">
+              <p style="margin:0;font-size:15px;color:${ink}">${c.signOff}</p>
+              <p style="margin:4px 0 0;font-size:15px;color:${ink};font-weight:600">${escapeHtml(site.name)}</p>
+              <p style="margin:2px 0 0;font-size:13px">
+                <a href="${site.url}" style="color:${accent};text-decoration:none">${site.url.replace(/^https?:\/\//, "")}</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <div style="max-width:560px;margin:12px auto 0;font-size:11px;color:${muted};text-align:center;line-height:1.5">
+          ${c.footer}
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
 }
