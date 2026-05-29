@@ -62,10 +62,13 @@ const en = {
     ctaTitle: "Want something similar built?",
     ctaBody:
       "I take on a small number of projects at a time. If this looks like your problem, let's talk.",
+    relatedTitle: "Related work",
   },
 
   about: {
     title: "About",
+    description:
+      "About Oleg Katrichuk — full-stack engineer focused on .NET, TypeScript, React and Next.js. End-to-end delivery for startups and small product teams.",
     paragraphs: [
       "I'm a full-stack engineer focused on .NET and TypeScript. I build and ship web applications for startups and small product teams — work where one engineer who can move across the whole stack beats a large, slow team.",
       "Most projects start the same way: there's a product idea or an app that's stuck, and the team needs someone who can take ownership end-to-end — API, database, frontend, deploy — without a lot of hand-holding.",
@@ -80,6 +83,8 @@ const en = {
 
   contact: {
     title: "Let's talk",
+    description:
+      "Contact Oleg Katrichuk — full-stack engineer. Tell me about your project and I'll reply within a day. Telegram, email or the form.",
     intro:
       "The more concrete you are about the problem and the timeline, the faster I can tell you whether I'm the right person for it.",
     name: "Name",
@@ -218,10 +223,13 @@ const uk: Dictionary = {
     ctaTitle: "Потрібне щось подібне?",
     ctaBody:
       "Беру невелику кількість проєктів одночасно. Якщо це схоже на вашу задачу — напишіть.",
+    relatedTitle: "Інші проєкти",
   },
 
   about: {
     title: "Про мене",
+    description:
+      "Про Олега Катричука — full-stack інженера на .NET, TypeScript, React і Next.js. Розробка під ключ для стартапів і невеликих продуктових команд.",
     paragraphs: [
       "Я full-stack інженер із фокусом на .NET і TypeScript. Створюю й випускаю вебзастосунки для стартапів і невеликих продуктових команд — там, де один інженер, що рухається по всьому стеку, ефективніший за велику повільну команду.",
       "Більшість проєктів починаються однаково: є ідея продукту або застосунок, що застряг, і команді потрібен той, хто візьме на себе все — API, базу даних, фронтенд, деплой — без зайвого контролю.",
@@ -236,6 +244,8 @@ const uk: Dictionary = {
 
   contact: {
     title: "Поговорімо",
+    description:
+      "Зв'язатися з Олегом Катричуком — full-stack інженером. Розкажіть про проєкт — відповім протягом доби. Telegram, email або форма.",
     intro:
       "Що конкретніше про проблему й терміни — то швидше я скажу, чи я та людина для цього.",
     name: "Ім'я",
@@ -372,10 +382,13 @@ const ru: Dictionary = {
     ctaTitle: "Нужно что-то подобное?",
     ctaBody:
       "Беру небольшое число проектов одновременно. Если это похоже на вашу задачу — напишите.",
+    relatedTitle: "Другие проекты",
   },
 
   about: {
     title: "Обо мне",
+    description:
+      "Об Олеге Катричуке — full-stack инженер на .NET, TypeScript, React и Next.js. Разработка под ключ для стартапов и небольших продуктовых команд.",
     paragraphs: [
       "Я full-stack инженер с фокусом на .NET и TypeScript. Создаю и выпускаю веб-приложения для стартапов и небольших продуктовых команд — там, где один инженер, работающий по всему стеку, эффективнее большой медленной команды.",
       "Большинство проектов начинаются одинаково: есть идея продукта или застрявшее приложение, и команде нужен тот, кто возьмёт на себя всё — API, базу данных, фронтенд, деплой — без лишнего контроля.",
@@ -390,6 +403,8 @@ const ru: Dictionary = {
 
   contact: {
     title: "Давайте обсудим",
+    description:
+      "Связаться с Олегом Катричуком — full-stack инженером. Расскажите о проекте — отвечу в течение суток. Telegram, email или форма.",
     intro:
       "Чем конкретнее о проблеме и сроках — тем быстрее я скажу, тот ли я человек для этого.",
     name: "Имя",

@@ -6,6 +6,8 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Container } from "@/components/container";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata({
   params,
@@ -17,7 +19,12 @@ export async function generateMetadata({
   const t = getDictionary(locale);
   return {
     title: t.contact.title,
+    description: t.contact.description,
     alternates: localeAlternates(locale, "/contact"),
+    openGraph: {
+      title: t.contact.title,
+      description: t.contact.description,
+    },
   };
 }
 
@@ -32,6 +39,12 @@ export default async function ContactPage({
 
   return (
     <section className="py-16 sm:py-20">
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          { name: site.name, path: "/" },
+          { name: t.contact.title, path: "/contact" },
+        ])}
+      />
       <Container>
         <Reveal>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">

@@ -6,6 +6,8 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/jsonld";
 
 export async function generateMetadata({
   params,
@@ -17,7 +19,13 @@ export async function generateMetadata({
   const t = getDictionary(locale);
   return {
     title: t.about.title,
+    description: t.about.description,
     alternates: localeAlternates(locale, "/about"),
+    openGraph: {
+      title: t.about.title,
+      description: t.about.description,
+      type: "profile",
+    },
   };
 }
 
@@ -32,6 +40,12 @@ export default async function AboutPage({
 
   return (
     <section className="py-16 sm:py-20">
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          { name: site.name, path: "/" },
+          { name: t.about.title, path: "/about" },
+        ])}
+      />
       <Container>
         <Reveal>
           <h1 className="font-serif text-3xl font-medium tracking-tight sm:text-4xl">

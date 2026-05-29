@@ -31,6 +31,39 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale);
 
+  const keywordsByLocale: Record<string, string[]> = {
+    en: [
+      "full-stack engineer",
+      ".NET developer",
+      "TypeScript developer",
+      "React developer",
+      "Next.js developer",
+      "freelance web developer",
+      "SaaS development",
+      "Oleg Katrichuk",
+    ],
+    uk: [
+      "full-stack розробник",
+      ".NET розробник",
+      "TypeScript розробник",
+      "React розробник",
+      "Next.js розробник",
+      "фрілансер веб-розробник",
+      "розробка SaaS",
+      "Олег Катричук",
+    ],
+    ru: [
+      "full-stack разработчик",
+      ".NET разработчик",
+      "TypeScript разработчик",
+      "React разработчик",
+      "Next.js разработчик",
+      "фрилансер веб-разработчик",
+      "разработка SaaS",
+      "Олег Катричук",
+    ],
+  };
+
   return {
     metadataBase: new URL(site.url),
     title: {
@@ -38,6 +71,9 @@ export async function generateMetadata({
       template: `%s — ${site.name}`,
     },
     description: t.description,
+    keywords: keywordsByLocale[locale] ?? keywordsByLocale.en,
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
     alternates: localeAlternates(locale),
     openGraph: {
       title: `${site.name} — ${t.role}`,
@@ -51,7 +87,23 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${site.name} — ${t.role}`,
       description: t.description,
+      creator: "@ilikenewcoin",
+      site: "@ilikenewcoin",
     },
+    // TODO: fill in once verified in each console.
+    // Get codes from:
+    //   - Google Search Console → https://search.google.com/search-console
+    //   - Bing Webmaster Tools  → https://www.bing.com/webmasters
+    //   - Yandex.Webmaster      → https://webmaster.yandex.com
+    verification: {
+      google: process.env.NEXT_PUBLIC_VERIFY_GOOGLE,
+      yandex: process.env.NEXT_PUBLIC_VERIFY_YANDEX,
+      other: process.env.NEXT_PUBLIC_VERIFY_BING
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_VERIFY_BING }
+        : undefined,
+    },
+    category: "technology",
+    formatDetection: { email: false, telephone: false, address: false },
   };
 }
 
@@ -72,6 +124,18 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} h-full antialiased`}
     >
+      <head>
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#ffffff"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#0b0b0c"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           dangerouslySetInnerHTML={{

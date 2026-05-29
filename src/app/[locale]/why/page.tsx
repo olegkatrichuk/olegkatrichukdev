@@ -9,6 +9,8 @@ import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button-link";
 import { CaseCard } from "@/components/case-card";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, faqPageSchema } from "@/lib/jsonld";
 
 // The three sites I built for clients in the "do I even need a site?" boat.
 // Futura (own SaaS) is excluded — different question.
@@ -47,6 +49,13 @@ export default async function WhyPage({
 
   return (
     <>
+      <JsonLd data={faqPageSchema(t.why.objections)} />
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          { name: site.name, path: "/" },
+          { name: t.nav.why, path: "/why" },
+        ])}
+      />
       <section className="border-b border-border">
         <Container className="py-20 sm:py-28">
           <Reveal>

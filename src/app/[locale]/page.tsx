@@ -10,7 +10,11 @@ import { ButtonLink } from "@/components/button-link";
 import { CaseCard } from "@/components/case-card";
 import { Reveal } from "@/components/reveal";
 import { JsonLd } from "@/components/json-ld";
-import { personSchema, websiteSchema } from "@/lib/jsonld";
+import {
+  personSchema,
+  websiteSchema,
+  professionalServiceSchema,
+} from "@/lib/jsonld";
 
 const icons = [Target, GitBranch, ShieldCheck, Handshake];
 
@@ -28,6 +32,7 @@ export default async function Home({
     <>
       <JsonLd data={personSchema()} />
       <JsonLd data={websiteSchema()} />
+      <JsonLd data={professionalServiceSchema(locale)} />
       <section className="relative overflow-hidden border-b border-border">
         <div className="hero-grid absolute inset-0 -z-10" aria-hidden />
         <Container className="py-20 sm:py-32">

@@ -18,6 +18,12 @@ export type CaseStudyMeta = {
   draft?: boolean;
   // higher = shown first
   order?: number;
+  // Optional hero image (path under /public). Used for the case-study
+  // hero, OG card override, and JSON-LD image.
+  coverImage?: string;
+  coverAlt?: string;
+  coverWidth?: number;
+  coverHeight?: number;
 };
 
 export type CaseStudy = CaseStudyMeta & {
@@ -54,6 +60,10 @@ function readAll(locale: Locale): CaseStudy[] {
       year: data.year ?? new Date().getFullYear(),
       draft: data.draft ?? false,
       order: data.order ?? 0,
+      coverImage: data.coverImage ?? undefined,
+      coverAlt: data.coverAlt ?? undefined,
+      coverWidth: data.coverWidth ?? undefined,
+      coverHeight: data.coverHeight ?? undefined,
       body: content,
     } satisfies CaseStudy;
   });

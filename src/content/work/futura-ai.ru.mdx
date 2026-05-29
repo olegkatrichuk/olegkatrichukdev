@@ -8,6 +8,10 @@ liveUrl: "https://beautyfutura.com"
 year: 2026
 order: 105
 draft: false
+coverImage: "/work/futura-ai/hero.webp"
+coverAlt: "Главная beautyfutura.com — встраиваемый AI-чат для бьюти-салонов, мультитенантный SaaS"
+coverWidth: 1800
+coverHeight: 983
 ---
 
 ## Проблема
@@ -36,6 +40,15 @@ draft: false
 - **Мультитенантность с первого дня** — каждая запись привязана к
   тенанту, закреплено в ADR ещё до первой таблицы.
 
+<img
+  src="/work/futura-ai/dashboard.webp"
+  alt="Дашборд тенанта Futura AI — управление услугами, ценами и диалогами для бьюти-салона"
+  width="1800"
+  height="999"
+  loading="lazy"
+  decoding="async"
+/>
+
 ## Стек и почему
 
 - **Embed = лоадер + iframe, не SDK** — салон вставляет один `<script>`;
@@ -62,6 +75,15 @@ draft: false
   нужно.
 - Архитектура масштабируется по тенантам: новый салон — это новая
   запись, а не новый деплой.
+
+<img
+  src="/work/futura-ai/widget.webp"
+  alt="AI-виджет Futura в действии на сайте салона — отвечает клиентам об услугах и ценах в реальном времени"
+  width="1800"
+  height="1047"
+  loading="lazy"
+  decoding="async"
+/>
 
 ## Что было сложно
 

@@ -6,6 +6,9 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Container } from "@/components/container";
 import { CaseRow } from "@/components/case-row";
 import { Reveal } from "@/components/reveal";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbSchema, itemListSchema } from "@/lib/jsonld";
+import { site } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -34,6 +37,13 @@ export default async function WorkPage({
 
   return (
     <section className="py-16 sm:py-20">
+      <JsonLd data={itemListSchema(locale, work)} />
+      <JsonLd
+        data={breadcrumbSchema(locale, [
+          { name: site.name, path: "/" },
+          { name: t.work.title, path: "/work" },
+        ])}
+      />
       <Container>
         <Reveal>
           <h1 className="font-serif text-3xl font-medium tracking-tight sm:text-4xl">

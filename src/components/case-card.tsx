@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { CaseStudyMeta } from "@/lib/content";
 import { lh, type Locale } from "@/lib/i18n";
@@ -15,8 +16,20 @@ export function CaseCard({
   return (
     <Link
       href={lh(locale, `/work/${c.slug}`)}
-      className="group relative flex h-full flex-col rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
     >
+      {c.coverImage && (
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-surface">
+          <Image
+            src={c.coverImage}
+            alt={c.coverAlt ?? c.title}
+            fill
+            sizes="(min-width: 640px) 50vw, 100vw"
+            className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-6">
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="font-semibold tracking-tight transition-colors group-hover:text-accent">
           {c.title}
@@ -44,6 +57,7 @@ export function CaseCard({
         {readLabel}
         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
       </span>
+      </div>
     </Link>
   );
 }

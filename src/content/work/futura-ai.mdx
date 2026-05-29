@@ -8,6 +8,10 @@ liveUrl: "https://beautyfutura.com"
 year: 2026
 order: 105
 draft: false
+coverImage: "/work/futura-ai/hero.webp"
+coverAlt: "Futura AI homepage — embeddable AI chat widget for beauty salons, beautyfutura.com landing page hero"
+coverWidth: 1800
+coverHeight: 983
 ---
 
 ## The problem
@@ -34,6 +38,15 @@ I built Futura as a multi-tenant SaaS, in layers:
 - **Multi-tenancy from day one** — every record scoped to a tenant, decided
   in an ADR before the first table existed.
 
+<img
+  src="/work/futura-ai/dashboard.webp"
+  alt="Futura AI tenant dashboard — managing services, prices and conversations for a beauty salon, multi-tenant SaaS admin"
+  width="1800"
+  height="999"
+  loading="lazy"
+  decoding="async"
+/>
+
 ## Stack & why
 
 - **Embed = loader + iframe, not an SDK** — a salon pastes one `<script>`;
@@ -57,6 +70,15 @@ I built Futura as a multi-tenant SaaS, in layers:
   handles photo and voice messages, and hands off to a human when it should.
 - Architecture that scales per tenant: a new salon is a new row, not a new
   deployment.
+
+<img
+  src="/work/futura-ai/widget.webp"
+  alt="Futura AI chat widget embedded on a beauty salon site — answering client questions about services and prices in real time"
+  width="1800"
+  height="1047"
+  loading="lazy"
+  decoding="async"
+/>
 
 ## What was hard
 

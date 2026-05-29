@@ -12,7 +12,7 @@ export const site: {
 } = {
   name: "Oleg Katrichuk",
 
-  url: "https://olegkatrichuk.dev",
+  url: "https://olegkatrichuk.com",
 
   email: "katrichukoleg@gmail.com",
 
