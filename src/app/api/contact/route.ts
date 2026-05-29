@@ -249,7 +249,7 @@ function getCopy(locale: string | null): Copy {
   if (locale === "uk") {
     return {
       greet: (n) => `Привіт, ${n} 👋`,
-      body: "Отримав ваше повідомлення — повернуся з відповіддю протягом 24 годин. Зазвичай швидше.",
+      body: "Отримав ваше повідомлення — зазвичай повертаюся з відповіддю протягом кількох годин.",
       fasterTitle: "Потрібно швидше?",
       fasterBody:
         "Будь-який із каналів нижче доходить до мене швидше за email.",
@@ -263,7 +263,7 @@ function getCopy(locale: string | null): Copy {
   if (locale === "ru") {
     return {
       greet: (n) => `Привет, ${n} 👋`,
-      body: "Получил ваше сообщение — вернусь с ответом в течение 24 часов. Обычно быстрее.",
+      body: "Получил ваше сообщение — обычно возвращаюсь с ответом в течение нескольких часов.",
       fasterTitle: "Нужно быстрее?",
       fasterBody:
         "Любой из каналов ниже доходит до меня быстрее email.",
@@ -276,7 +276,7 @@ function getCopy(locale: string | null): Copy {
   }
   return {
     greet: (n) => `Hi ${n} 👋`,
-    body: "Got your message — I'll come back to you within 24 hours, usually sooner.",
+    body: "Got your message — I usually come back within a few hours.",
     fasterTitle: "Need to talk sooner?",
     fasterBody: "Any of the channels below reach me faster than email.",
     exploreTitle: "While you wait",

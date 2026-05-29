@@ -55,7 +55,7 @@ const en = {
     ],
     ctaTitle: "Have a project in mind?",
     ctaBody:
-      "Tell me what you're building and where it's stuck. I reply within a day.",
+      "Tell me what you're building and where it's stuck. I usually reply within a few hours.",
   },
 
   work: {
@@ -90,7 +90,7 @@ const en = {
   contact: {
     title: "Let's talk",
     description:
-      "Contact Oleg Katrichuk — full-stack engineer. Tell me about your project and I'll reply within a day. Telegram, email or the form.",
+      "Contact Oleg Katrichuk — full-stack engineer. Tell me about your project and I usually reply within a few hours. Telegram, email or the form.",
     intro:
       "The more concrete you are about the problem and the timeline, the faster I can tell you whether I'm the right person for it.",
     name: "Name",
@@ -98,7 +98,7 @@ const en = {
     message: "What are you building?",
     send: "Send message",
     sending: "Sending…",
-    sent: "Thanks — your message is in. I'll get back to you within a day.",
+    sent: "Thanks — your message is in. I usually get back within a few hours.",
     error: "Something went wrong.",
     validation:
       "Please fill in name, a valid email and a short message.",
@@ -234,7 +234,7 @@ const uk: Dictionary = {
     ],
     ctaTitle: "Маєте проєкт на думці?",
     ctaBody:
-      "Розкажіть, що ви будуєте і де застрягли. Відповідаю протягом доби.",
+      "Розкажіть, що ви будуєте і де застрягли. Зазвичай відповідаю протягом кількох годин.",
   },
 
   work: {
@@ -269,7 +269,7 @@ const uk: Dictionary = {
   contact: {
     title: "Поговорімо",
     description:
-      "Зв'язатися з Олегом Катричуком — full-stack інженером. Розкажіть про проєкт — відповім протягом доби. Telegram, email або форма.",
+      "Зв'язатися з Олегом Катричуком — full-stack інженером. Розкажіть про проєкт — зазвичай відповідаю протягом кількох годин. Telegram, email або форма.",
     intro:
       "Що конкретніше про проблему й терміни — то швидше я скажу, чи я та людина для цього.",
     name: "Ім'я",
@@ -277,7 +277,7 @@ const uk: Dictionary = {
     message: "Що ви будуєте?",
     send: "Надіслати",
     sending: "Надсилання…",
-    sent: "Дякую — повідомлення отримано. Відповім протягом доби.",
+    sent: "Дякую — повідомлення отримано. Зазвичай відповідаю протягом кількох годин.",
     error: "Щось пішло не так.",
     validation:
       "Будь ласка, вкажіть ім'я, дійсний email і коротке повідомлення.",
@@ -411,7 +411,7 @@ const ru: Dictionary = {
     ],
     ctaTitle: "Есть проект на примете?",
     ctaBody:
-      "Расскажите, что вы строите и где застряли. Отвечаю в течение суток.",
+      "Расскажите, что вы строите и где застряли. Обычно отвечаю в течение нескольких часов.",
   },
 
   work: {
@@ -446,7 +446,7 @@ const ru: Dictionary = {
   contact: {
     title: "Давайте обсудим",
     description:
-      "Связаться с Олегом Катричуком — full-stack инженером. Расскажите о проекте — отвечу в течение суток. Telegram, email или форма.",
+      "Связаться с Олегом Катричуком — full-stack инженером. Расскажите о проекте — обычно отвечаю в течение нескольких часов. Telegram, email или форма.",
     intro:
       "Чем конкретнее о проблеме и сроках — тем быстрее я скажу, тот ли я человек для этого.",
     name: "Имя",
@@ -454,7 +454,7 @@ const ru: Dictionary = {
     message: "Что вы строите?",
     send: "Отправить",
     sending: "Отправка…",
-    sent: "Спасибо — сообщение получено. Отвечу в течение суток.",
+    sent: "Спасибо — сообщение получено. Обычно отвечаю в течение нескольких часов.",
     error: "Что-то пошло не так.",
     validation:
       "Пожалуйста, укажите имя, корректный email и короткое сообщение.",
