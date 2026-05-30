@@ -29,8 +29,8 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const t = getDictionary(locale);
   return {
-    title: t.why.title,
-    description: t.why.heroSub,
+    title: t.why.metaTitle,
+    description: t.why.metaDescription,
     alternates: localeAlternates(locale, "/why"),
   };
 }

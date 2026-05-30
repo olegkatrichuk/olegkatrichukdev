@@ -28,6 +28,9 @@ export function personSchema() {
       .map((s) => s.href)
       .filter((h): h is string => !!h && /^https?:\/\//.test(h)),
     knowsAbout: [
+      "Website development",
+      "Web development",
+      "Web application development",
       ".NET",
       "ASP.NET",
       "C#",
@@ -55,9 +58,39 @@ export function websiteSchema() {
 }
 
 const serviceDescription: Record<Locale, string> = {
-  en: "Freelance full-stack web development with .NET, TypeScript, React & Next.js. Solo engineer, end-to-end delivery, paid after launch.",
-  uk: "Фриланс full-stack веб-розробка на .NET, TypeScript, React і Next.js. Один інженер, наскрізна реалізація, оплата після запуску.",
-  ru: "Фриланс full-stack веб-разработка на .NET, TypeScript, React и Next.js. Один инженер, сквозная реализация, оплата после запуска.",
+  en: "Website and web-app development with .NET, TypeScript, React & Next.js. Solo full-stack engineer, end-to-end delivery, paid after launch.",
+  uk: "Створення та розробка сайтів і вебзастосунків на .NET, TypeScript, React і Next.js. Один full-stack інженер, наскрізна реалізація, оплата після запуску.",
+  ru: "Создание и разработка сайтов и веб-приложений на .NET, TypeScript, React и Next.js. Один full-stack инженер, сквозная реализация, оплата после запуска.",
+};
+
+const serviceTypes: Record<Locale, string[]> = {
+  en: [
+    "Website development",
+    "Custom website development",
+    "Web application development",
+    ".NET backend development",
+    "React / Next.js frontend development",
+    "SaaS MVP development",
+    "API design and integration",
+  ],
+  uk: [
+    "Створення сайтів",
+    "Розробка сайту під ключ",
+    "Розробка вебзастосунків",
+    "Бекенд-розробка на .NET",
+    "Фронтенд на React / Next.js",
+    "Розробка SaaS MVP",
+    "Проєктування та інтеграція API",
+  ],
+  ru: [
+    "Создание сайтов",
+    "Разработка сайта под ключ",
+    "Разработка веб-приложений",
+    "Бэкенд-разработка на .NET",
+    "Фронтенд на React / Next.js",
+    "Разработка SaaS MVP",
+    "Проектирование и интеграция API",
+  ],
 };
 
 export function professionalServiceSchema(locale: Locale) {
@@ -75,13 +108,7 @@ export function professionalServiceSchema(locale: Locale) {
       { "@type": "Place", name: "European Union" },
       { "@type": "Place", name: "CIS" },
     ],
-    serviceType: [
-      "Web application development",
-      ".NET backend development",
-      "React / Next.js frontend development",
-      "SaaS MVP development",
-      "API design and integration",
-    ],
+    serviceType: serviceTypes[locale] ?? serviceTypes.en,
     availableLanguage: ["English", "Ukrainian", "Russian"],
     priceRange: "$$",
     paymentAccepted: "Bank transfer, USDT",

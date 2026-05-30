@@ -34,6 +34,10 @@ export async function generateMetadata({
 
   const keywordsByLocale: Record<string, string[]> = {
     en: [
+      "website development",
+      "web development",
+      "custom website development",
+      "web application development",
       "full-stack engineer",
       ".NET developer",
       "TypeScript developer",
@@ -44,6 +48,11 @@ export async function generateMetadata({
       "Oleg Katrichuk",
     ],
     uk: [
+      "створення сайтів",
+      "розробка сайту",
+      "замовити сайт",
+      "сайт для бізнесу",
+      "розробка вебзастосунків",
       "full-stack розробник",
       ".NET розробник",
       "TypeScript розробник",
@@ -54,6 +63,11 @@ export async function generateMetadata({
       "Олег Катричук",
     ],
     ru: [
+      "создание сайтов",
+      "разработка сайта",
+      "заказать сайт",
+      "сайт для бизнеса",
+      "разработка веб-приложений",
       "full-stack разработчик",
       ".NET разработчик",
       "TypeScript разработчик",
@@ -68,7 +82,7 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(site.url),
     title: {
-      default: `${site.name} — ${t.role}`,
+      default: t.seoTitle,
       template: `%s — ${site.name}`,
     },
     description: t.description,

@@ -1,0 +1,112 @@
+---
+title: "Errors are not exceptions — the Result pattern that kept my API honest"
+summary: "Throwing for a not-found or a validation error turns your happy path into a minefield of invisible exits. Return the failure instead, and the compiler starts working for you."
+date: 2026-05-30
+tags: [".NET", "Architecture", "Error Handling", "CQRS"]
+draft: false
+---
+
+There is a line in almost every .NET codebase that quietly lies to you:
+
+```csharp
+var order = await _repo.GetByIdAsync(id)
+    ?? throw new NotFoundException($"Order {id} not found");
+```
+
+It reads fine. It even feels defensive. But it has turned a perfectly
+ordinary outcome — *the thing you asked for isn't there* — into an
+exception, and exceptions are not control flow. They are a fire alarm.
+Pull that alarm for every missing row, every bad input, every duplicate
+email, and your handlers grow a halo of invisible exits that no signature
+admits to. Six months later nobody can tell which of those throws are
+"the user did something normal" and which are "the database is on fire."
+
+On [PetZone][petzone] — a .NET clean-architecture backend behind a
+multi-language React SPA — I drew the line early: exceptions are for the
+unexpected, and *expected* failures are values. They get returned, not
+thrown.
+
+## What "failure as a value" actually looks like
+
+Every command and query handler returns a `Result<T>`. The error carries
+a typed code, so the same value can be mapped to a log level, a
+ProblemDetails payload, and an HTTP status without a single `catch`.
+
+```csharp
+public async Task<Result<ListingDto>> Handle(GetListing q, CancellationToken ct)
+{
+    var listing = await _repo.FindAsync(q.Id, ct);
+    if (listing is null)
+        return Result.Failure<ListingDto>(Error.NotFound("Listing.NotFound"));
+
+    if (listing.OwnerId != q.RequesterId)
+        return Result.Failure<ListingDto>(Error.Forbidden("Listing.Forbidden"));
+
+    return Result.Success(listing.ToDto());
+}
+```
+
+Nothing here is novel. What matters is what it removes: there is no
+`try`, no `catch`, no exception type to remember to catch two layers up,
+and — most importantly — the *signature tells the truth*. `Task<Result<T>>`
+says "this can fail, and you must deal with it." `Task<T>` with a hidden
+`throw` says "trust me."
+
+## The boundary does the translating, once
+
+You only need one place that knows how a typed error becomes an HTTP
+response. Mine is a single extension on the endpoint side:
+
+```csharp
+return result.Match(
+    onSuccess: dto => TypedResults.Ok(dto),
+    onFailure: err => err.Code switch
+    {
+        var c when c.EndsWith("NotFound")  => TypedResults.NotFound(err.ToProblem()),
+        var c when c.EndsWith("Forbidden") => TypedResults.Forbid(),
+        var c when c.EndsWith("Conflict")  => TypedResults.Conflict(err.ToProblem()),
+        _                                  => TypedResults.UnprocessableEntity(err.ToProblem()),
+    });
+```
+
+Compare that to exception-based handling, where the mapping lives in a
+global exception filter that has to *reverse-engineer* intent from the
+exception type — and where a new `SomethingWentWrongException` that nobody
+registered falls through to a 500 with a stack trace in the body.
+
+## What exceptions still earn their keep for
+
+This is not "exceptions are bad." A dropped database connection, a
+malformed config at startup, a bug that violated an invariant — those
+*should* throw, loudly, and hit the global handler. The rule is simple
+and it fits on one line:
+
+> If you can predict the failure, return it. If it means something is
+> broken, throw it.
+
+"Order not found" is predictable. "Postgres refused the connection" is
+broken. The first is a `Result`; the second is an exception. Once you
+hold that line, your `try/catch` count collapses to a handful at the real
+boundaries, and every one of them means something.
+
+## Where this pays off that you won't see in a demo
+
+The win isn't in any single handler — it's in what *doesn't* happen later:
+
+- **No invisible exits.** A reviewer reading `Task<Result<T>>` knows the
+  failure modes without running the code. A hidden `throw` three calls
+  deep is found at 2am, not in review.
+- **The frontend gets a contract.** Because every failure is a typed
+  payload, the React client unwraps one consistent envelope instead of
+  guessing whether a 400 has a message, a field list, or an empty body.
+- **Logging stops lying.** Expected failures log at `Information` with a
+  code; only real exceptions reach `Error`. Your alerting can finally
+  trust that an `Error`-level log means something is actually wrong.
+
+The cost is a `Result<T>` type and the discipline to return it. The
+payoff is a codebase where the type system, not tribal knowledge, tells
+you how each operation can fail. On a solo-built project that nobody else
+is around to explain things, that's not a nicety — it's the only
+documentation that can't go stale.
+
+[petzone]: /en/work/getpetzone-adoption-platform

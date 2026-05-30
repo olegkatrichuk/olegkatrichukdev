@@ -2,10 +2,11 @@ import type { Locale } from "./i18n";
 
 const en = {
   role: "Full-stack engineer — .NET & TypeScript",
+  seoTitle: "Website Development with .NET & React — Oleg Katrichuk",
   positioning:
     "I help startups and product teams ship reliable web apps — from .NET APIs to React & Next.js frontends — without months of agency overhead.",
   description:
-    "Full-stack engineer building production web applications with .NET, TypeScript and React for clients in the US, EU, Ukraine and the CIS.",
+    "Website and web-app development by a full-stack engineer — .NET, TypeScript, React & Next.js. Custom sites and SaaS for clients in the US, EU, Ukraine and the CIS.",
   locationLine: "Remote — working with clients in the US, EU, Ukraine & the CIS",
 
   nav: {
@@ -110,6 +111,9 @@ const en = {
 
   why: {
     title: "Why your business needs a website",
+    metaTitle: "Website development for business — why you need a site",
+    metaDescription:
+      "Why your business needs its own website — and what custom website development gives you that Instagram, TikTok and marketplaces never will.",
     heroSub:
       "Instagram, TikTok, marketplaces — any platform can suspend you, change its algorithm, or take a bigger cut tomorrow. A site on your own domain is the only asset you actually own — and the only one that ranks, converts and works while you sleep.",
     reasonsTitle: "Four reasons",
@@ -181,10 +185,11 @@ export type Dictionary = typeof en;
 
 const uk: Dictionary = {
   role: "Full-stack інженер — .NET і TypeScript",
+  seoTitle: "Створення сайтів на .NET і React — Oleg Katrichuk",
   positioning:
     "Допомагаю стартапам і продуктовим командам випускати надійні вебзастосунки — від .NET API до фронтенду на React і Next.js — без місяців агентських накладних витрат.",
   description:
-    "Full-stack інженер, який створює продакшн-вебзастосунки на .NET, TypeScript і React для клієнтів зі США, ЄС, України та СНД.",
+    "Створення та розробка сайтів і вебзастосунків — full-stack інженер на .NET, TypeScript і React. Сайти під ключ і SaaS для клієнтів зі США, ЄС, України та СНД.",
   locationLine: "Віддалено — працюю з клієнтами зі США, ЄС, України та СНД",
 
   nav: {
@@ -289,6 +294,9 @@ const uk: Dictionary = {
 
   why: {
     title: "Навіщо вашому бізнесу сайт",
+    metaTitle: "Створення сайту для бізнесу — навіщо він потрібен",
+    metaDescription:
+      "Навіщо бізнесу власний сайт і що дає розробка сайту під ключ — на відміну від Instagram і маркетплейсів, які завтра можуть вас заблокувати.",
     heroSub:
       "Instagram, TikTok, маркетплейси — будь-яка платформа може заблокувати вас, змінити алгоритм або підняти комісію завтра. Сайт на власному домені — єдиний актив, який справді ваш — і єдиний, який ранжується, конвертує і працює, поки ви спите.",
     reasonsTitle: "Чотири причини",
@@ -358,10 +366,11 @@ const uk: Dictionary = {
 
 const ru: Dictionary = {
   role: "Full-stack инженер — .NET и TypeScript",
+  seoTitle: "Создание сайтов на .NET и React — Oleg Katrichuk",
   positioning:
     "Помогаю стартапам и продуктовым командам выпускать надёжные веб-приложения — от .NET API до фронтенда на React и Next.js — без месяцев агентских накладных расходов.",
   description:
-    "Full-stack инженер, создающий продакшн-веб-приложения на .NET, TypeScript и React для клиентов из США, ЕС, Украины и СНГ.",
+    "Создание и разработка сайтов и веб-приложений — full-stack инженер на .NET, TypeScript и React. Сайты под ключ и SaaS для клиентов из США, ЕС, Украины и СНГ.",
   locationLine: "Удалённо — работаю с клиентами из США, ЕС, Украины и СНГ",
 
   nav: {
@@ -466,6 +475,9 @@ const ru: Dictionary = {
 
   why: {
     title: "Зачем вашему бизнесу сайт",
+    metaTitle: "Создание сайта для бизнеса — зачем он нужен",
+    metaDescription:
+      "Зачем бизнесу собственный сайт и что даёт разработка сайта под ключ — в отличие от Instagram и маркетплейсов, которые завтра могут вас заблокировать.",
     heroSub:
       "Instagram, TikTok, маркетплейсы — любая платформа может заблокировать вас, изменить алгоритм или поднять комиссию завтра. Сайт на собственном домене — единственный актив, который действительно ваш — и единственный, который ранжируется, конвертирует и работает, пока вы спите.",
     reasonsTitle: "Четыре причины",
