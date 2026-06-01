@@ -76,7 +76,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const cases = getCaseStudies();
   const journal = getJournalEntries();
 
-  const entries: { path: string; lastModified: Date; priority: number }[] = [
+  const entries: {
+    path: string;
+    lastModified: Date;
+    priority: number;
+    // Absolute image URLs surfaced in the image sitemap (Google Images).
+    images?: string[];
+  }[] = [
     { path: "", lastModified: staticMtime, priority: 1.0 },
     { path: "/work", lastModified: staticMtime, priority: 0.9 },
     { path: "/services", lastModified: staticMtime, priority: 0.9 },
@@ -88,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: `/work/${c.slug}`,
       lastModified: caseStudyMtime(c.slug),
       priority: 0.8,
+      images: c.coverImage ? [`${site.url}${c.coverImage}`] : undefined,
     })),
     ...journal.map((e) => ({
       path: `/journal/${e.slug}`,
@@ -102,6 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: e.lastModified,
       changeFrequency: "monthly" as const,
       priority: e.priority,
+      ...(e.images ? { images: e.images } : {}),
       alternates: {
         languages: Object.fromEntries(
           locales.map((l) => [l, `${site.url}/${l}${e.path}`]),
