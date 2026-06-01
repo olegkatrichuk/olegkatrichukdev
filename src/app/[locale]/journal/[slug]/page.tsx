@@ -10,6 +10,7 @@ import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button-link";
 import { JsonLd } from "@/components/json-ld";
 import { articleSchema, breadcrumbSchema } from "@/lib/jsonld";
+import { mdxOptions } from "@/lib/mdx";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -104,7 +105,7 @@ export default async function JournalArticle({
         </header>
 
         <div className="prose prose-zinc mt-10 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent prose-blockquote:border-l-accent prose-blockquote:bg-surface prose-blockquote:py-1 prose-blockquote:not-italic prose-img:my-8 prose-img:h-auto prose-img:w-full prose-img:rounded-xl prose-img:border prose-img:border-border">
-          <MDXRemote source={e.body} />
+          <MDXRemote source={e.body} options={mdxOptions} />
         </div>
 
         <div className="mt-16 rounded-xl border border-border bg-surface p-10 text-center">

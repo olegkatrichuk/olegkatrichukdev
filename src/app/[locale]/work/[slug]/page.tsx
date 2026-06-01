@@ -10,6 +10,7 @@ import { getDictionary } from "@/lib/dictionaries";
 import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button-link";
 import { JsonLd } from "@/components/json-ld";
+import { mdxOptions } from "@/lib/mdx";
 import { breadcrumbSchema, caseStudySchema } from "@/lib/jsonld";
 import { site } from "@/lib/site";
 import { CaseCard } from "@/components/case-card";
@@ -132,7 +133,7 @@ export default async function CaseStudyPage({
         </header>
 
         <div className="prose prose-zinc mt-10 max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent prose-blockquote:border-l-accent prose-blockquote:bg-surface prose-blockquote:py-1 prose-blockquote:not-italic prose-img:my-8 prose-img:h-auto prose-img:w-full prose-img:rounded-xl prose-img:border prose-img:border-border">
-          <MDXRemote source={c.body} />
+          <MDXRemote source={c.body} options={mdxOptions} />
         </div>
 
         {related.length > 0 && (
