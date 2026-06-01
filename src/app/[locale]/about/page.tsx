@@ -7,7 +7,12 @@ import { Container } from "@/components/container";
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { JsonLd } from "@/components/json-ld";
-import { breadcrumbSchema } from "@/lib/jsonld";
+import {
+  breadcrumbSchema,
+  personSchema,
+  organizationSchema,
+  profilePageSchema,
+} from "@/lib/jsonld";
 
 export async function generateMetadata({
   params,
@@ -40,6 +45,9 @@ export default async function AboutPage({
 
   return (
     <section className="py-16 sm:py-20">
+      <JsonLd data={profilePageSchema(locale)} />
+      <JsonLd data={personSchema()} />
+      <JsonLd data={organizationSchema()} />
       <JsonLd
         data={breadcrumbSchema(locale, [
           { name: site.name, path: "/" },

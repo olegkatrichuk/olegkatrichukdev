@@ -4,11 +4,32 @@ import type { CaseStudyMeta } from "./content";
 import type { JournalEntryMeta } from "./journal";
 
 const PERSON_ID = `${site.url}/#person`;
+const ORG_ID = `${site.url}/#futura`;
 
 // Reference to the canonical Person node (defined once in personSchema).
 // Using @id deduplicates the entity across every schema block so Google
 // attributes all content to one author entity.
 const author = { "@id": PERSON_ID };
+
+const PERSON_DESCRIPTION =
+  "Full-stack engineer building websites, web apps and multi-tenant SaaS with .NET, TypeScript, React and Next.js. Founder of Futura AI. Works with clients in the US, EU, Ukraine and the CIS.";
+
+// The product I founded — a real Organization node tied to my Person entity.
+// Linking the author to a live, verifiable company strengthens the entity
+// graph Google builds around the name (E-E-A-T / knowledge panel).
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "Futura AI",
+    url: "https://beautyfutura.com",
+    description:
+      "Embeddable AI chat widget that answers a beauty salon's clients 24/7 — multi-tenant SaaS.",
+    founder: { "@id": PERSON_ID },
+    sameAs: ["https://beautyfutura.com"],
+  };
+}
 
 export function personSchema() {
   return {
@@ -18,7 +39,16 @@ export function personSchema() {
     name: site.name,
     url: site.url,
     email: `mailto:${site.email}`,
+    description: PERSON_DESCRIPTION,
     jobTitle: "Full-stack engineer — .NET & TypeScript",
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Full-stack software engineer",
+      occupationalCategory: "15-1252.00",
+      skills:
+        ".NET, C#, TypeScript, React, Next.js, PostgreSQL, multi-tenant SaaS",
+    },
+    worksFor: { "@id": ORG_ID },
     address: {
       "@type": "PostalAddress",
       addressCountry: "UA",
@@ -54,6 +84,20 @@ export function websiteSchema() {
     url: site.url,
     inLanguage: ["en", "uk", "ru"],
     author,
+  };
+}
+
+// ProfilePage is the canonical container Google expects for an "about the
+// author" page; it tells the crawler the page's main entity IS the person,
+// which is exactly what feeds a knowledge panel.
+export function profilePageSchema(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: `${site.url}/${locale}/about`,
+    inLanguage: locale,
+    mainEntity: { "@id": PERSON_ID },
+    about: { "@id": PERSON_ID },
   };
 }
 

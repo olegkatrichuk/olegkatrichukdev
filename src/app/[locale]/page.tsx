@@ -14,6 +14,7 @@ import {
   personSchema,
   websiteSchema,
   professionalServiceSchema,
+  organizationSchema,
 } from "@/lib/jsonld";
 
 const icons = [Target, GitBranch, ShieldCheck, Handshake];
@@ -31,6 +32,7 @@ export default async function Home({
   return (
     <>
       <JsonLd data={personSchema()} />
+      <JsonLd data={organizationSchema()} />
       <JsonLd data={websiteSchema()} />
       <JsonLd data={professionalServiceSchema(locale)} />
       <section className="relative overflow-hidden border-b border-border">
