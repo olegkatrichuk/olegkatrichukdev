@@ -11,6 +11,7 @@ const en = {
 
   nav: {
     work: "Work",
+    services: "Services",
     why: "Why a site",
     journal: "Journal",
     about: "About",
@@ -162,6 +163,86 @@ const en = {
       "Tell me what you're trying to build. I'll tell you straight whether a site is the right move.",
   },
 
+  services: {
+    title: "Web development services",
+    metaTitle: "Web development services — websites, web apps & SaaS",
+    metaDescription:
+      "Full-stack web development services: custom websites, web applications and SaaS MVPs built with .NET, TypeScript, React and Next.js. Fixed scope, paid after launch.",
+    heroSub:
+      "One full-stack engineer, end to end — from a marketing site to a multi-tenant SaaS. Scope and price agreed up front, in writing. You pay after launch, not before.",
+    listTitle: "What I build",
+    items: [
+      {
+        title: "Business & marketing websites",
+        body: "Fast, SEO-ready sites on your own domain — multilingual, accessible, and built to rank. The asset you own, not a rented profile.",
+      },
+      {
+        title: "Web applications",
+        body: "Dashboards, portals and internal tools with a .NET backend and a React / Next.js frontend. Real auth, real data, production-grade from day one.",
+      },
+      {
+        title: "SaaS MVPs",
+        body: "From idea to a live product real customers can pay for — multi-tenant architecture, billing, and the boring infrastructure that lets it scale later.",
+      },
+      {
+        title: "APIs & integrations",
+        body: "Clean, documented REST APIs, third-party integrations and data pipelines. The plumbing that connects your product to everything else.",
+      },
+      {
+        title: "Rescue & refactor",
+        body: "Inherited a codebase that nobody can safely change? I stabilise it — tests, observability, and a path back to shipping features without fear.",
+      },
+      {
+        title: "Ongoing partnership",
+        body: "After launch I stay available for updates, SEO and promotion — for as long as you need a hand. The relationship doesn't end at hand-off.",
+      },
+    ],
+    stackTitle: "The stack",
+    stackBody:
+      "C# / .NET, ASP.NET, EF Core, Clean Architecture & CQRS on the backend; TypeScript, React and Next.js on the frontend; PostgreSQL and Docker underneath. Battle-tested choices, not whatever's trending this month.",
+    processTitle: "How we'd work",
+    process: [
+      {
+        title: "Scope, in writing",
+        body: "We agree exactly what gets built and what it costs before any code — no creeping invoice, no surprises.",
+      },
+      {
+        title: "Ship in slices",
+        body: "Working software every week, not a big-bang reveal at the end. You see progress and can change course early.",
+      },
+      {
+        title: "Pay after launch",
+        body: "You pay once the project is live and you're happy with it. No upfront deposit.",
+      },
+    ],
+    faqTitle: "Questions clients ask",
+    faq: [
+      {
+        q: "How much does a website or web app cost?",
+        a: "It depends on scope, which we fix in writing before starting. A marketing site is a different number from a multi-tenant SaaS. You get one agreed price up front — no hourly creep — and you pay it after launch.",
+      },
+      {
+        q: "How long does it take?",
+        a: "A focused marketing site is usually a couple of weeks; a web app or SaaS MVP, a few weeks to a few months depending on scope. Because I ship in weekly slices, you see working software the whole way through, not just at the end.",
+      },
+      {
+        q: "Do you work with clients in my country?",
+        a: "Yes — remote, with clients in the US, EU, Ukraine and the CIS. I work in English, Ukrainian and Russian.",
+      },
+      {
+        q: "What if I already have a half-built project?",
+        a: "I take on rescue and refactor work. I'll assess what's there, stabilise it with tests and observability, and get you back to shipping features safely.",
+      },
+      {
+        q: "Will I be able to maintain it after?",
+        a: "Yes. You get clean, documented code and a proper hand-off — and I stay available for updates and SEO if you'd rather not. Day-to-day content changes are usually content, not code.",
+      },
+    ],
+    ctaTitle: "Have a project in mind?",
+    ctaBody:
+      "Tell me what you're building and where it's stuck. I usually reply within a few hours.",
+  },
+
   journal: {
     title: "Journal",
     intro:
@@ -194,6 +275,7 @@ const uk: Dictionary = {
 
   nav: {
     work: "Роботи",
+    services: "Послуги",
     why: "Навіщо сайт",
     journal: "Журнал",
     about: "Про мене",
@@ -345,6 +427,86 @@ const uk: Dictionary = {
       "Розкажіть, що ви будуєте. Скажу прямо, чи сайт — правильний крок.",
   },
 
+  services: {
+    title: "Послуги веброзробки",
+    metaTitle: "Послуги веброзробки — сайти, вебзастосунки та SaaS",
+    metaDescription:
+      "Full-stack веброзробка: сайти під ключ, вебзастосунки та SaaS MVP на .NET, TypeScript, React і Next.js. Фіксований обсяг, оплата після запуску.",
+    heroSub:
+      "Один full-stack інженер на весь цикл — від маркетингового сайту до multi-tenant SaaS. Обсяг і ціна узгоджуються наперед, письмово. Оплата після запуску, а не до.",
+    listTitle: "Що я роблю",
+    items: [
+      {
+        title: "Сайти для бізнесу й маркетингу",
+        body: "Швидкі, готові до SEO сайти на власному домені — багатомовні, доступні й створені, щоб ранжуватися. Актив, який належить вам, а не орендований профіль.",
+      },
+      {
+        title: "Вебзастосунки",
+        body: "Дашборди, портали та внутрішні інструменти з бекендом на .NET і фронтендом на React / Next.js. Справжня авторизація, справжні дані, продакшн-рівень з першого дня.",
+      },
+      {
+        title: "SaaS MVP",
+        body: "Від ідеї до живого продукту, за який платять реальні клієнти — multi-tenant архітектура, білінг і нудна інфраструктура, що дозволяє масштабуватися згодом.",
+      },
+      {
+        title: "API та інтеграції",
+        body: "Чисті, задокументовані REST API, інтеграції зі сторонніми сервісами та конвеєри даних. Те, що з'єднує ваш продукт з усім іншим.",
+      },
+      {
+        title: "Порятунок і рефакторинг",
+        body: "Успадкували код, який ніхто не наважується змінювати? Я стабілізую його — тести, спостережуваність і шлях назад до випуску фіч без страху.",
+      },
+      {
+        title: "Довготривале партнерство",
+        body: "Після запуску я залишаюсь доступним для оновлень, SEO та просування — стільки, скільки потрібна допомога. Співпраця не закінчується передачею.",
+      },
+    ],
+    stackTitle: "Стек",
+    stackBody:
+      "C# / .NET, ASP.NET, EF Core, Clean Architecture і CQRS на бекенді; TypeScript, React і Next.js на фронтенді; PostgreSQL і Docker під капотом. Перевірені рішення, а не те, що в тренді цього місяця.",
+    processTitle: "Як ми працюватимемо",
+    process: [
+      {
+        title: "Обсяг — письмово",
+        body: "Узгоджуємо, що саме буде зроблено і скільки це коштує, до будь-якого коду — жодних рахунків, що ростуть, жодних сюрпризів.",
+      },
+      {
+        title: "Випуск частинами",
+        body: "Робоче ПЗ щотижня, а не велике відкриття наприкінці. Ви бачите прогрес і можете змінити курс рано.",
+      },
+      {
+        title: "Оплата після запуску",
+        body: "Ви платите, коли проєкт у проді й ви ним задоволені. Без передоплати.",
+      },
+    ],
+    faqTitle: "Що питають клієнти",
+    faq: [
+      {
+        q: "Скільки коштує сайт або вебзастосунок?",
+        a: "Залежить від обсягу, який ми фіксуємо письмово до старту. Маркетинговий сайт — це одна сума, multi-tenant SaaS — інша. Ви отримуєте одну узгоджену ціну наперед — без погодинного росту — і платите її після запуску.",
+      },
+      {
+        q: "Скільки це займає часу?",
+        a: "Сфокусований маркетинговий сайт — зазвичай пару тижнів; вебзастосунок чи SaaS MVP — від кількох тижнів до кількох місяців залежно від обсягу. Оскільки я випускаю щотижневими частинами, ви бачите робоче ПЗ весь час, а не лише наприкінці.",
+      },
+      {
+        q: "Чи працюєте з клієнтами з моєї країни?",
+        a: "Так — віддалено, з клієнтами зі США, ЄС, України та СНД. Працюю англійською, українською та російською.",
+      },
+      {
+        q: "А якщо в мене вже є наполовину готовий проєкт?",
+        a: "Беру роботу з порятунку й рефакторингу. Оціню те, що є, стабілізую тестами та спостережуваністю й поверну вас до безпечного випуску фіч.",
+      },
+      {
+        q: "Чи зможу я підтримувати його потім?",
+        a: "Так. Ви отримуєте чистий, задокументований код і належну передачу — а я залишаюсь доступним для оновлень і SEO, якщо не хочете цим займатися. Щоденні зміни контенту — це контент, а не код.",
+      },
+    ],
+    ctaTitle: "Маєте проєкт на думці?",
+    ctaBody:
+      "Розкажіть, що ви будуєте і де застрягли. Зазвичай відповідаю протягом кількох годин.",
+  },
+
   journal: {
     title: "Журнал",
     intro:
@@ -375,6 +537,7 @@ const ru: Dictionary = {
 
   nav: {
     work: "Работы",
+    services: "Услуги",
     why: "Зачем сайт",
     journal: "Журнал",
     about: "Обо мне",
@@ -524,6 +687,86 @@ const ru: Dictionary = {
     ctaTitle: "Не уверены, даст ли сайт результат именно вам?",
     ctaBody:
       "Расскажите, что вы строите. Скажу прямо, сайт ли — правильный шаг.",
+  },
+
+  services: {
+    title: "Услуги веб-разработки",
+    metaTitle: "Услуги веб-разработки — сайты, веб-приложения и SaaS",
+    metaDescription:
+      "Full-stack веб-разработка: сайты под ключ, веб-приложения и SaaS MVP на .NET, TypeScript, React и Next.js. Фиксированный объём, оплата после запуска.",
+    heroSub:
+      "Один full-stack инженер на весь цикл — от маркетингового сайта до multi-tenant SaaS. Объём и цена согласуются заранее, письменно. Оплата после запуска, а не до.",
+    listTitle: "Что я делаю",
+    items: [
+      {
+        title: "Сайты для бизнеса и маркетинга",
+        body: "Быстрые, готовые к SEO сайты на собственном домене — многоязычные, доступные и созданные, чтобы ранжироваться. Актив, который принадлежит вам, а не арендованный профиль.",
+      },
+      {
+        title: "Веб-приложения",
+        body: "Дашборды, порталы и внутренние инструменты с бекендом на .NET и фронтендом на React / Next.js. Настоящая авторизация, настоящие данные, продакшн-уровень с первого дня.",
+      },
+      {
+        title: "SaaS MVP",
+        body: "От идеи до живого продукта, за который платят реальные клиенты — multi-tenant архитектура, биллинг и скучная инфраструктура, позволяющая масштабироваться позже.",
+      },
+      {
+        title: "API и интеграции",
+        body: "Чистые, задокументированные REST API, интеграции со сторонними сервисами и конвейеры данных. То, что соединяет ваш продукт со всем остальным.",
+      },
+      {
+        title: "Спасение и рефакторинг",
+        body: "Унаследовали код, который никто не решается менять? Я стабилизирую его — тесты, наблюдаемость и путь обратно к выпуску фич без страха.",
+      },
+      {
+        title: "Долгосрочное партнёрство",
+        body: "После запуска я остаюсь доступным для обновлений, SEO и продвижения — столько, сколько нужна помощь. Сотрудничество не заканчивается передачей.",
+      },
+    ],
+    stackTitle: "Стек",
+    stackBody:
+      "C# / .NET, ASP.NET, EF Core, Clean Architecture и CQRS на бекенде; TypeScript, React и Next.js на фронтенде; PostgreSQL и Docker под капотом. Проверенные решения, а не то, что в тренде в этом месяце.",
+    processTitle: "Как мы будем работать",
+    process: [
+      {
+        title: "Объём — письменно",
+        body: "Согласуем, что именно будет сделано и сколько это стоит, до любого кода — никаких растущих счетов, никаких сюрпризов.",
+      },
+      {
+        title: "Выпуск частями",
+        body: "Рабочее ПО каждую неделю, а не большое открытие в конце. Вы видите прогресс и можете изменить курс рано.",
+      },
+      {
+        title: "Оплата после запуска",
+        body: "Вы платите, когда проект в проде и вы им довольны. Без предоплаты.",
+      },
+    ],
+    faqTitle: "Что спрашивают клиенты",
+    faq: [
+      {
+        q: "Сколько стоит сайт или веб-приложение?",
+        a: "Зависит от объёма, который мы фиксируем письменно до старта. Маркетинговый сайт — это одна сумма, multi-tenant SaaS — другая. Вы получаете одну согласованную цену заранее — без почасового роста — и платите её после запуска.",
+      },
+      {
+        q: "Сколько это занимает времени?",
+        a: "Сфокусированный маркетинговый сайт — обычно пару недель; веб-приложение или SaaS MVP — от нескольких недель до нескольких месяцев в зависимости от объёма. Поскольку я выпускаю еженедельными частями, вы видите рабочее ПО всё время, а не только в конце.",
+      },
+      {
+        q: "Работаете ли с клиентами из моей страны?",
+        a: "Да — удалённо, с клиентами из США, ЕС, Украины и СНГ. Работаю на английском, украинском и русском.",
+      },
+      {
+        q: "А если у меня уже есть наполовину готовый проект?",
+        a: "Беру работу по спасению и рефакторингу. Оценю то, что есть, стабилизирую тестами и наблюдаемостью и верну вас к безопасному выпуску фич.",
+      },
+      {
+        q: "Смогу ли я поддерживать его потом?",
+        a: "Да. Вы получаете чистый, задокументированный код и нормальную передачу — а я остаюсь доступным для обновлений и SEO, если не хотите этим заниматься. Ежедневные изменения контента — это контент, а не код.",
+      },
+    ],
+    ctaTitle: "Есть проект на примете?",
+    ctaBody:
+      "Расскажите, что вы строите и где застряли. Обычно отвечаю в течение нескольких часов.",
   },
 
   journal: {

@@ -16,6 +16,7 @@ export function SiteHeader({
 }) {
   const nav = [
     { label: t.nav.work, href: lh(locale, "/work") },
+    { label: t.nav.services, href: lh(locale, "/services") },
     { label: t.nav.why, href: lh(locale, "/why") },
     { label: t.nav.journal, href: lh(locale, "/journal") },
     { label: t.nav.about, href: lh(locale, "/about") },

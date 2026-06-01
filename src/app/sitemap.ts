@@ -79,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: { path: string; lastModified: Date; priority: number }[] = [
     { path: "", lastModified: staticMtime, priority: 1.0 },
     { path: "/work", lastModified: staticMtime, priority: 0.9 },
+    { path: "/services", lastModified: staticMtime, priority: 0.9 },
     { path: "/why", lastModified: staticMtime, priority: 0.8 },
     { path: "/journal", lastModified: staticMtime, priority: 0.8 },
     { path: "/about", lastModified: staticMtime, priority: 0.6 },

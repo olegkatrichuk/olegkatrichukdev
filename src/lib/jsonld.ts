@@ -137,12 +137,19 @@ const serviceTypes: Record<Locale, string[]> = {
   ],
 };
 
-export function professionalServiceSchema(locale: Locale) {
+export function professionalServiceSchema(
+  locale: Locale,
+  // When rendered on the dedicated /services page, point the node at that URL
+  // and attach an OfferCatalog of the concrete services. On the home page both
+  // are omitted and the node stays a lightweight summary.
+  opts?: { path?: string; offers?: { title: string; body: string }[] },
+) {
+  const types = serviceTypes[locale] ?? serviceTypes.en;
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: `${site.name} — Full-stack engineering`,
-    url: `${site.url}/${locale}`,
+    url: `${site.url}/${locale}${opts?.path ?? ""}`,
     image: `${site.url}/${locale}/opengraph-image`,
     description: serviceDescription[locale] ?? serviceDescription.en,
     provider: { "@id": PERSON_ID },
@@ -152,10 +159,26 @@ export function professionalServiceSchema(locale: Locale) {
       { "@type": "Place", name: "European Union" },
       { "@type": "Place", name: "CIS" },
     ],
-    serviceType: serviceTypes[locale] ?? serviceTypes.en,
+    serviceType: types,
     availableLanguage: ["English", "Ukrainian", "Russian"],
     priceRange: "$$",
     paymentAccepted: "Bank transfer, USDT",
+    ...(opts?.offers?.length
+      ? {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: types[0],
+            itemListElement: opts.offers.map((o) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: o.title,
+                description: o.body,
+              },
+            })),
+          },
+        }
+      : {}),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
