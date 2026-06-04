@@ -1,0 +1,80 @@
+---
+title: ".NET or Node.js for your backend? A practical guide for 2026"
+summary: "Both ship great products. The honest differences are about team, type safety, and the shape of your problem — not raw speed. Here's how to choose without the tribalism."
+date: 2026-06-02
+tags: ["Backend", ".NET", "Node.js", "Architecture"]
+draft: false
+---
+
+If you're choosing a backend in 2026, you'll find a thousand benchmarks and
+twice as many opinions. Most of them argue the wrong thing. Both .NET and Node.js
+power serious products at scale; the choice almost never comes down to raw speed.
+It comes down to the *shape* of your problem and who's going to maintain it. Here
+is how I actually decide — as someone who ships in both.
+
+## The short version
+
+| If your project is… | Lean toward |
+| --- | --- |
+| A content site, real-time app, or fast MVP with a JS-heavy frontend | Node.js |
+| Business logic, complex domain rules, long-lived product | .NET |
+| A team already fluent in one of them | That one |
+| Heavy CPU work, strict correctness, large codebase | .NET |
+| Tiny serverless functions, glue code, scripting | Node.js |
+
+Neither is wrong. The most expensive mistake is picking on vibes and then
+fighting the language for three years.
+
+## Where Node.js wins
+
+Node shines when the work is **I/O-bound and the frontend is already JavaScript.**
+One language across the stack, a massive package ecosystem, and a hiring pool the
+size of the ocean. For real-time features (chat, live dashboards), serverless
+functions, and MVPs you want live next week, it's hard to beat. The trade-off is
+that JavaScript's looseness — even with TypeScript bolted on — lets whole classes
+of bugs through that a stricter system would catch at compile time. That's fine
+for small surfaces and painful on large ones.
+
+## Where .NET wins
+
+.NET is where I reach when the **business logic is the hard part** — pricing
+engines, permissions, workflows, anything where being subtly *wrong* costs real
+money. A genuinely strong type system, first-class async, and a framework that
+gives you dependency injection, validation, auth, and an ORM in the box mean less
+glue and fewer surprises as the codebase grows. It's also quietly fast: modern
+.NET is among the top performers in mainstream web benchmarks, so "Node is faster"
+hasn't been true for years. The trade-off is a slightly steeper ramp and a
+smaller hiring pool than JavaScript — though the developers tend to be senior.
+
+This is the stack I lean on for products meant to live for years, and it's behind
+most of [the work I ship](/work) — from a multi-tenant SaaS to clean-architecture
+APIs.
+
+## The questions that actually decide it
+
+Forget the benchmarks for a minute and answer four things:
+
+1. **What does your team already know?** A backend your people can maintain beats
+   a "better" one they can't. This outweighs almost everything else.
+2. **Is the hard part logic or I/O?** Complex domain rules favor .NET's type
+   safety; lots of connections and real-time favor Node's model.
+3. **How long does this need to live?** Throwaway MVP vs. a product you'll grow
+   for five years changes the calculus toward stricter foundations.
+4. **One language or two?** A JS frontend with a JS backend is one mental model.
+   Whether that simplicity is worth more than .NET's guarantees is a real,
+   project-specific call.
+
+## The honest answer
+
+There is no universal winner, and anyone who says otherwise is selling something.
+I build in both and choose per project — Node when speed-to-launch and a JS
+frontend dominate, .NET when correctness and longevity do. The wrong move is
+letting a benchmark or a Reddit thread decide an architecture you'll live with
+for years.
+
+---
+
+If you're weighing a backend decision for something real and want a straight,
+non-tribal opinion on which fits *your* project, that's exactly the call I enjoy.
+See [what I build](/services), or [tell me what you're working on](/contact) — I
+usually reply within a few hours.
