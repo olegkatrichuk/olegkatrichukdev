@@ -1,80 +1,26 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { locales } from "@/lib/i18n";
 import { getCaseStudies } from "@/lib/content";
 import { getJournalEntries } from "@/lib/journal";
 
-const WORK_DIR = path.join(process.cwd(), "src/content/work");
-const JOURNAL_DIR = path.join(process.cwd(), "src/content/journal");
-
-// Stable mtime for a case-study slug: max of the base file and any
-// per-locale override. Falls back to "now" if the file vanished.
-function caseStudyMtime(slug: string): Date {
-  const candidates = [
-    path.join(WORK_DIR, `${slug}.mdx`),
-    path.join(WORK_DIR, `${slug}.uk.mdx`),
-    path.join(WORK_DIR, `${slug}.ru.mdx`),
-  ];
-  let latest = 0;
-  for (const p of candidates) {
-    try {
-      const stat = fs.statSync(p);
-      if (stat.mtimeMs > latest) latest = stat.mtimeMs;
-    } catch {
-      // ignore missing locale files
-    }
-  }
-  return latest ? new Date(latest) : new Date();
-}
-
-function journalEntryMtime(slug: string): Date {
-  const candidates = [
-    path.join(JOURNAL_DIR, `${slug}.mdx`),
-    path.join(JOURNAL_DIR, `${slug}.uk.mdx`),
-    path.join(JOURNAL_DIR, `${slug}.ru.mdx`),
-  ];
-  let latest = 0;
-  for (const p of candidates) {
-    try {
-      const stat = fs.statSync(p);
-      if (stat.mtimeMs > latest) latest = stat.mtimeMs;
-    } catch {
-      /* ignore */
-    }
-  }
-  return latest ? new Date(latest) : new Date();
-}
-
-// One stable date for all static routes — most recently edited page file
-// in the [locale] tree. Stays constant across redeploys that touched
-// nothing under app/.
-function staticPagesMtime(): Date {
-  const root = path.join(process.cwd(), "src/app/[locale]");
-  let latest = 0;
-  const walk = (dir: string) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) walk(full);
-      else if (entry.isFile() && /\.(tsx|ts|mdx)$/.test(entry.name)) {
-        const m = fs.statSync(full).mtimeMs;
-        if (m > latest) latest = m;
-      }
-    }
-  };
-  try {
-    walk(root);
-  } catch {
-    /* ignore */
-  }
-  return latest ? new Date(latest) : new Date();
-}
+// lastmod comes from frontmatter `date` fields, not file mtimes: CI
+// checkouts reset every mtime to build time, which made all sitemap
+// dates identical (and useless to Google) on each deploy.
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticMtime = staticPagesMtime();
   const cases = getCaseStudies();
   const journal = getJournalEntries();
+
+  const caseDate = (date?: string) => (date ? new Date(date) : new Date());
+  // Static pages change when content does — use the newest content date
+  // so the stamp is stable across deploys that publish nothing new.
+  const staticMtime = new Date(
+    Math.max(
+      ...cases.map((c) => caseDate(c.date).getTime()),
+      ...journal.map((e) => new Date(e.date).getTime()),
+    ),
+  );
 
   const entries: {
     path: string;
@@ -92,13 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", lastModified: staticMtime, priority: 0.6 },
     ...cases.map((c) => ({
       path: `/work/${c.slug}`,
-      lastModified: caseStudyMtime(c.slug),
+      lastModified: caseDate(c.date),
       priority: 0.8,
       images: c.coverImage ? [`${site.url}${c.coverImage}`] : undefined,
     })),
     ...journal.map((e) => ({
       path: `/journal/${e.slug}`,
-      lastModified: journalEntryMtime(e.slug),
+      lastModified: new Date(e.date),
       priority: 0.7,
     })),
   ];

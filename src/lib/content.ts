@@ -15,6 +15,9 @@ export type CaseStudyMeta = {
   result: string;
   liveUrl?: string;
   year: number;
+  // ISO publish/update date (YYYY-MM-DD) — drives sitemap lastmod. File
+  // mtimes are useless in CI (checkout resets them all to build time).
+  date?: string;
   draft?: boolean;
   // higher = shown first
   order?: number;
@@ -58,6 +61,12 @@ function readAll(locale: Locale): CaseStudy[] {
       result: data.result ?? "",
       liveUrl: data.liveUrl ?? undefined,
       year: data.year ?? new Date().getFullYear(),
+      date:
+        typeof data.date === "string"
+          ? data.date
+          : data.date instanceof Date
+            ? data.date.toISOString().slice(0, 10)
+            : undefined,
       draft: data.draft ?? false,
       order: data.order ?? 0,
       coverImage: data.coverImage ?? undefined,
