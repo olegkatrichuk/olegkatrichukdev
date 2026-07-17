@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { locales } from "@/lib/i18n";
+import { locales, defaultLocale } from "@/lib/i18n";
 import { getCaseStudies } from "@/lib/content";
 import { getJournalEntries } from "@/lib/journal";
 
@@ -57,9 +57,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: e.priority,
       ...(e.images ? { images: e.images } : {}),
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${site.url}/${l}${e.path}`]),
-        ),
+        languages: Object.fromEntries([
+          ...locales.map((l) => [l, `${site.url}/${l}${e.path}`]),
+          ["x-default", `${site.url}/${defaultLocale}${e.path}`],
+        ]),
       },
     })),
   );
