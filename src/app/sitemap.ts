@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { locales, defaultLocale } from "@/lib/i18n";
 import { getCaseStudies } from "@/lib/content";
 import { getJournalEntries } from "@/lib/journal";
+import { landingSlugs } from "./[locale]/services/[slug]/page";
 
 // lastmod comes from frontmatter `date` fields, not file mtimes: CI
 // checkouts reset every mtime to build time, which made all sitemap
@@ -32,6 +33,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", lastModified: staticMtime, priority: 1.0 },
     { path: "/work", lastModified: staticMtime, priority: 0.9 },
     { path: "/services", lastModified: staticMtime, priority: 0.9 },
+    ...landingSlugs.map((slug) => ({
+      path: `/services/${slug}`,
+      lastModified: staticMtime,
+      priority: 0.9,
+    })),
     { path: "/why", lastModified: staticMtime, priority: 0.8 },
     { path: "/journal", lastModified: staticMtime, priority: 0.8 },
     { path: "/about", lastModified: staticMtime, priority: 0.6 },

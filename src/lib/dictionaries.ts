@@ -243,6 +243,315 @@ const en = {
       "Tell me what you're building and where it's stuck. I usually reply within a few hours.",
   },
 
+  // Commercial landing pages under /services/[slug]. Each one targets a
+  // single buying intent instead of letting /services compete with itself.
+  landings: {
+    indexTitle: "Pick what you need",
+    indexSub:
+      "Each of these is a separate conversation with a separate scope. Start from the one closest to your situation.",
+    includesTitle: "What's included",
+    processTitle: "How we'd work",
+    casesTitle: "Related work",
+    faqTitle: "Questions clients ask",
+    pages: {
+      "website-development": {
+        navTitle: "Website development",
+        title: "Website development",
+        metaTitle: "Website development — custom sites built to rank",
+        metaDescription:
+          "Custom website development by a full-stack engineer: fast, multilingual, SEO-ready sites on .NET and Next.js. Fixed scope agreed in writing, paid after launch.",
+        heroSub:
+          "A site on your own domain that loads fast, reads well on a phone and is built so Google can actually index it. Not a template with your logo dropped in.",
+        intro:
+          "Most business sites lose customers in the same three places: they take too long to load, they break on mobile, and search engines never see half the content. I build the site as an engineer would — server-rendered, accessible, multilingual where you need it — so the thing you paid for keeps working a year later.",
+        includes: [
+          {
+            title: "Design that fits your business",
+            body: "A layout built around what you actually sell and who is buying, not a theme you have to bend your content into.",
+          },
+          {
+            title: "Built to be indexed",
+            body: "Server-side rendering, clean URL structure, structured data, sitemap and hreflang — the technical groundwork Google needs before ranking is even on the table.",
+          },
+          {
+            title: "Fast on a real phone",
+            body: "Optimised images, minimal JavaScript, Core Web Vitals in the green — tested on mid-range hardware, not just a fast laptop.",
+          },
+          {
+            title: "Multilingual if you need it",
+            body: "Two or three languages with correct hreflang and per-language URLs, so each version can rank in its own market.",
+          },
+          {
+            title: "Content you can edit",
+            body: "Text and images live in a place you can change yourself. Day-to-day updates shouldn't require a developer.",
+          },
+          {
+            title: "Analytics from day one",
+            body: "You can see where visitors come from and what they do, so decisions about the site are based on numbers rather than opinion.",
+          },
+        ],
+        faq: [
+          {
+            q: "How long does a website take?",
+            a: "A focused business site is usually a couple of weeks from agreed scope to live. Bigger sites with many pages or languages take longer — and you see working pages every week rather than waiting until the end.",
+          },
+          {
+            q: "Will my site rank on Google?",
+            a: "I build the technical foundation that makes ranking possible — rendering, structure, speed, structured data, sitemaps. Ranking itself also depends on your content and how established your domain is, and I'll be straight with you about that instead of promising positions.",
+          },
+          {
+            q: "Can I update the text myself?",
+            a: "Yes. Content is separated from code, so changing text or swapping an image doesn't need a deployment or a developer.",
+          },
+          {
+            q: "Do I own the site?",
+            a: "Completely. Your domain, your hosting account, your code. Nothing is locked to me — you can hand it to another developer whenever you want.",
+          },
+          {
+            q: "What about after launch?",
+            a: "I stay available for updates, SEO and changes for as long as you need. There's no obligation, and no support contract you're forced into.",
+          },
+        ],
+      },
+      "web-app-development": {
+        navTitle: "Web app development",
+        title: "Web application development",
+        metaTitle: "Web application development — portals, dashboards, internal tools",
+        metaDescription:
+          "Custom web application development with a .NET backend and React / Next.js frontend: dashboards, client portals and internal tools with real auth and real data.",
+        heroSub:
+          "Dashboards, client portals and internal tools that replace the spreadsheet everyone is quietly afraid to touch.",
+        intro:
+          "A web app is where the interesting failures live: permissions, data that has to stay correct under concurrent edits, integrations that go down at the worst moment. I build these with a .NET backend and a React or Next.js frontend, with the boring parts — auth, validation, logging, tests — treated as part of the job rather than a later phase.",
+        includes: [
+          {
+            title: "Real authentication and roles",
+            body: "Proper login, sessions and permissions, so an ordinary user can't reach admin data by editing a URL.",
+          },
+          {
+            title: "A backend that holds up",
+            body: "C# / .NET with Clean Architecture and CQRS, PostgreSQL underneath. Business rules live in one place instead of being scattered across the UI.",
+          },
+          {
+            title: "An interface people can use",
+            body: "React / Next.js, responsive, keyboard-accessible, with states for loading, empty and error — the three screens most projects forget.",
+          },
+          {
+            title: "Integrations with what you already run",
+            body: "Payments, CRM, email, third-party APIs — connected with retries and error handling, not a fetch call and optimism.",
+          },
+          {
+            title: "Observability",
+            body: "Structured logs and metrics, so when something breaks at 2am the answer is in a dashboard rather than a guess.",
+          },
+          {
+            title: "Tests where they matter",
+            body: "Integration tests over real logic and real data paths, so a change next quarter doesn't quietly break billing.",
+          },
+        ],
+        faq: [
+          {
+            q: "How is this different from a website?",
+            a: "A website presents information; a web app does work — users log in, data changes, rules apply. That difference shows up in auth, data integrity and testing, which is most of the effort.",
+          },
+          {
+            q: "Can you work with our existing system?",
+            a: "Usually yes. I can build a new app against your current database or API, or add a service alongside what you run. First step is reading what's there before proposing anything.",
+          },
+          {
+            q: "Who owns the code and can our team take it over?",
+            a: "You own it. It's documented, conventionally structured .NET and TypeScript — a developer joining later reads it without a tour from me. Hand-off is part of the work, not a favour.",
+          },
+          {
+            q: "What if requirements change halfway?",
+            a: "They usually do. Because I ship in weekly slices, changing direction early is cheap. We re-agree scope in writing when a change is big enough to matter.",
+          },
+          {
+            q: "Do you handle hosting and deployment?",
+            a: "Yes — Docker-based deployment, environment configuration and a deploy pipeline, set up in your accounts so you keep control of it.",
+          },
+        ],
+      },
+      "saas-development": {
+        navTitle: "SaaS development",
+        title: "SaaS development & MVP",
+        metaTitle: "SaaS development — from idea to a product customers pay for",
+        metaDescription:
+          "SaaS MVP development: multi-tenant architecture, subscriptions and billing, built with .NET and Next.js by the engineer who runs his own SaaS product.",
+        heroSub:
+          "From idea to a live product real customers can subscribe to — with the multi-tenant groundwork that decides whether year two is possible.",
+        intro:
+          "I run my own SaaS (Futura AI), so this isn't theory. The decisions that hurt later are made in the first weeks: how tenants are isolated, how billing maps to access, whether one customer's data can ever appear in another's account. I build the MVP small but structured, so growth is a matter of adding features rather than rewriting the foundation.",
+        includes: [
+          {
+            title: "Multi-tenancy from day one",
+            body: "Tenant isolation designed in at the data layer, not bolted on after the first enterprise customer asks about it.",
+          },
+          {
+            title: "Subscriptions and billing",
+            body: "Plans, trials, upgrades and failed payments wired to what a user can actually access — including the unhappy paths.",
+          },
+          {
+            title: "Onboarding that converts",
+            body: "Sign-up to first real value in as few steps as possible. The MVP's job is to prove people will pay, and onboarding is where that's won or lost.",
+          },
+          {
+            title: "An admin view for you",
+            body: "See tenants, usage and subscription state without opening a database client.",
+          },
+          {
+            title: "Infrastructure that scales later",
+            body: "Docker, PostgreSQL, background jobs and caching set up so the second thousand users doesn't require a rebuild.",
+          },
+          {
+            title: "A scope that ships",
+            body: "We cut the feature list to what proves the business, launch it, and add the rest once real users have told you what matters.",
+          },
+        ],
+        faq: [
+          {
+            q: "How small should an MVP be?",
+            a: "Small enough to launch in weeks, complete enough that someone would pay for it. Most failed MVPs are too big, not too small — we cut aggressively and add back based on real feedback.",
+          },
+          {
+            q: "Why does multi-tenancy matter this early?",
+            a: "Because retrofitting it is a rewrite. Isolating tenants properly at the start costs a little upfront and saves the project later, especially the first time a customer asks a security question.",
+          },
+          {
+            q: "Can you integrate payments?",
+            a: "Yes — subscription billing including trials, upgrades, cancellations and failed-payment handling, connected to your feature access.",
+          },
+          {
+            q: "Have you actually built one?",
+            a: "Yes — Futura AI, a multi-tenant AI chat widget for beauty salons, live at beautyfutura.com. Same architecture I'd build for you.",
+          },
+          {
+            q: "What happens after launch?",
+            a: "I stay available to build the next round of features, fix what real usage exposes and keep infrastructure healthy — for as long as it's useful to you.",
+          },
+        ],
+      },
+      "dotnet-development": {
+        navTitle: ".NET development",
+        title: ".NET development",
+        metaTitle: ".NET development — C#, ASP.NET and EF Core backends",
+        metaDescription:
+          "Backend development on .NET: ASP.NET APIs, EF Core and PostgreSQL, Clean Architecture and CQRS. Built by a full-stack engineer who also ships the frontend.",
+        heroSub:
+          "APIs and backends in C# — built the way a system that has to survive its third year of changes is built.",
+        intro:
+          ".NET is what I reach for when correctness matters more than novelty: a typed language, a mature runtime and tooling that catches problems at compile time rather than in production. I build APIs and services with Clean Architecture and CQRS, EF Core over PostgreSQL, and the discipline that makes a codebase safe for someone else to change.",
+        includes: [
+          {
+            title: "REST APIs that are documented",
+            body: "ASP.NET endpoints with OpenAPI, typed responses and consistent error format — a frontend developer can work from the docs without asking you questions.",
+          },
+          {
+            title: "Clean Architecture and CQRS",
+            body: "Domain logic separated from infrastructure, commands separated from queries. Structure that stays readable as the feature list grows.",
+          },
+          {
+            title: "EF Core and PostgreSQL",
+            body: "Modelled schema, versioned migrations and queries that don't fall apart once the tables have real row counts.",
+          },
+          {
+            title: "Predictable error handling",
+            body: "Expected failures returned as results rather than thrown as exceptions, with RFC-compliant problem details on the wire.",
+          },
+          {
+            title: "Integration tests over real infrastructure",
+            body: "Tests that run against a real PostgreSQL in a container, so they prove the system works instead of proving the mocks agree.",
+          },
+          {
+            title: "Frontend included if you want it",
+            body: "I also build the React / Next.js side, so there's no gap between backend and UI where responsibility gets lost.",
+          },
+        ],
+        faq: [
+          {
+            q: "Why .NET rather than Node.js?",
+            a: "For business systems with real data rules, static typing and a mature runtime prevent a category of bugs outright. Node is fine for plenty of things — I've written about the trade-off in the journal rather than pretending one always wins.",
+          },
+          {
+            q: "Can you take over an existing .NET codebase?",
+            a: "Yes. I assess what's there, add tests and observability around the risky parts, then change things safely. Rescue work is a normal part of what I do.",
+          },
+          {
+            q: "Which .NET version do you use?",
+            a: "Current LTS, on stable releases rather than previews. If you're on something older, upgrading can be part of the scope.",
+          },
+          {
+            q: "Do you write tests?",
+            a: "Yes, integration tests first, against real infrastructure in containers. In-memory database fakes prove very little, so I don't use them.",
+          },
+          {
+            q: "Can you work with our existing team?",
+            a: "Yes — with your conventions, your review process and your repository. I write code that reads like the code already there.",
+          },
+        ],
+      },
+      "website-fixes": {
+        navTitle: "Fixes & rescue",
+        title: "Website fixes & rescue",
+        metaTitle: "Website fixes and rescue — repair, speed up, take over a project",
+        metaDescription:
+          "Fix a slow or broken site, finish a project another developer abandoned, or take over a codebase nobody can safely change. Assessment first, honest answer either way.",
+        heroSub:
+          "The site is slow, something broke, or the developer stopped replying. I'll tell you what's actually wrong before anyone talks about rebuilding.",
+        intro:
+          "Most rescue work starts the same way: something used to work, someone left, and now nobody wants to touch it. The first step is an assessment — what's there, what's dangerous, what can be saved. Sometimes the answer is a few days of fixes rather than a rebuild, and you should hear that even though a rebuild would pay me more.",
+        includes: [
+          {
+            title: "An honest assessment first",
+            body: "I read the code and the infrastructure and tell you what's wrong, what it takes to fix, and whether rebuilding is genuinely the better option.",
+          },
+          {
+            title: "Speed and Core Web Vitals",
+            body: "Find what's actually slow — images, blocking scripts, server response — and fix the causes rather than chasing a score.",
+          },
+          {
+            title: "Broken and abandoned projects",
+            body: "Finish what someone else left half-built, or stabilise a codebase whose author is unreachable.",
+          },
+          {
+            title: "SEO and indexing problems",
+            body: "Pages missing from Google, broken redirects and canonicals, a sitemap nobody maintained — the technical reasons traffic disappeared.",
+          },
+          {
+            title: "Security and dependency updates",
+            body: "Outdated packages with known vulnerabilities, exposed configuration, missing security headers — brought up to date deliberately.",
+          },
+          {
+            title: "A safe path forward",
+            body: "Tests and logging around the fragile parts, so the next change doesn't reintroduce the same failure.",
+          },
+        ],
+        faq: [
+          {
+            q: "Can you fix a site you didn't build?",
+            a: "Yes — that's most of this work. I read what's there first; the assessment is how we both find out whether fixing or rebuilding makes more sense.",
+          },
+          {
+            q: "What if the previous developer disappeared?",
+            a: "Common, and workable as long as you control the domain, hosting and repository. If access is missing, recovering it is the first thing we sort out.",
+          },
+          {
+            q: "How fast can something urgent be fixed?",
+            a: "A site that's down or badly broken gets looked at first. Small fixes often land the same day; how fast depends on what the assessment finds.",
+          },
+          {
+            q: "Will you tell me if it's not worth fixing?",
+            a: "Yes. If patching costs more than replacing, I'll say so and explain why — including when that means less work for me.",
+          },
+          {
+            q: "Do you take over ongoing maintenance?",
+            a: "Yes, if you want it — updates, monitoring and changes on an ongoing basis. No lock-in, and no contract you have to escape from.",
+          },
+        ],
+      },
+    },
+  },
+
   journal: {
     title: "Journal",
     intro:
@@ -507,6 +816,313 @@ const uk: Dictionary = {
       "Розкажіть, що ви будуєте і де застрягли. Зазвичай відповідаю протягом кількох годин.",
   },
 
+  landings: {
+    indexTitle: "Оберіть, що вам потрібно",
+    indexSub:
+      "Кожен напрямок — окрема розмова з окремим обсягом. Почніть з того, що найближче до вашої ситуації.",
+    includesTitle: "Що входить",
+    processTitle: "Як ми працюватимемо",
+    casesTitle: "Дотичні роботи",
+    faqTitle: "Що питають клієнти",
+    pages: {
+      "website-development": {
+        navTitle: "Створення сайтів",
+        title: "Створення сайтів під ключ",
+        metaTitle: "Створення сайтів під ключ — розробка сайту, готового ранжуватися",
+        metaDescription:
+          "Створення сайтів під ключ від full-stack інженера: швидкі, багатомовні, готові до SEO сайти на .NET і Next.js. Фіксований обсяг письмово, оплата після запуску.",
+        heroSub:
+          "Сайт на власному домені, який швидко вантажиться, нормально читається з телефона й побудований так, щоб Google міг його проіндексувати. Не шаблон із вашим логотипом.",
+        intro:
+          "Більшість бізнес-сайтів втрачають клієнтів в одних і тих самих трьох місцях: довго вантажаться, ламаються на мобільному, і пошуковики не бачать половини вмісту. Я будую сайт так, як його будував би інженер — із серверним рендерингом, доступністю, багатомовністю там, де вона потрібна — щоб те, за що ви заплатили, працювало й через рік.",
+        includes: [
+          {
+            title: "Дизайн під ваш бізнес",
+            body: "Структура навколо того, що ви реально продаєте і хто це купує, а не тема, під яку доводиться підганяти контент.",
+          },
+          {
+            title: "Побудовано, щоб індексуватися",
+            body: "Серверний рендеринг, чиста структура URL, мікророзмітка, sitemap і hreflang — технічний фундамент, без якого про ранжування говорити зарано.",
+          },
+          {
+            title: "Швидко на реальному телефоні",
+            body: "Оптимізовані зображення, мінімум JavaScript, Core Web Vitals у зеленій зоні — перевірено на середньому залізі, а не лише на швидкому ноутбуці.",
+          },
+          {
+            title: "Багатомовність, якщо потрібна",
+            body: "Дві-три мови з коректним hreflang і окремими URL, щоб кожна версія ранжувалася на своєму ринку.",
+          },
+          {
+            title: "Контент, який ви редагуєте самі",
+            body: "Тексти й зображення лежать там, де ви можете їх змінити. Щоденні правки не мають потребувати розробника.",
+          },
+          {
+            title: "Аналітика з першого дня",
+            body: "Ви бачите, звідки приходять відвідувачі й що вони роблять, тож рішення щодо сайту спираються на цифри, а не на здогади.",
+          },
+        ],
+        faq: [
+          {
+            q: "Скільки часу займає створення сайту?",
+            a: "Сфокусований бізнес-сайт — зазвичай пару тижнів від узгодженого обсягу до запуску. Більші сайти з багатьма сторінками чи мовами довше — і ви бачите готові сторінки щотижня, а не чекаєте до кінця.",
+          },
+          {
+            q: "Чи буде сайт ранжуватися в Google?",
+            a: "Я роблю технічний фундамент, який робить ранжування можливим — рендеринг, структуру, швидкість, мікророзмітку, sitemap. Саме ранжування залежить ще й від вашого контенту та віку домену, і я скажу про це прямо, а не обіцятиму позиції.",
+          },
+          {
+            q: "Чи зможу я сам змінювати тексти?",
+            a: "Так. Контент відокремлений від коду, тож змінити текст чи зображення можна без деплою й без розробника.",
+          },
+          {
+            q: "Чи належить сайт мені?",
+            a: "Повністю. Ваш домен, ваш хостинг, ваш код. Нічого не прив'язано до мене — ви можете передати його іншому розробнику будь-коли.",
+          },
+          {
+            q: "А що після запуску?",
+            a: "Залишаюсь доступним для оновлень, SEO і змін стільки, скільки потрібно. Без зобов'язань і без договору підтримки, у який вас заганяють.",
+          },
+        ],
+      },
+      "web-app-development": {
+        navTitle: "Вебзастосунки",
+        title: "Розробка вебзастосунків",
+        metaTitle: "Розробка вебзастосунків — портали, дашборди, внутрішні системи",
+        metaDescription:
+          "Розробка вебзастосунків із бекендом на .NET і фронтендом на React / Next.js: дашборди, клієнтські портали та внутрішні інструменти зі справжньою авторизацією.",
+        heroSub:
+          "Дашборди, клієнтські портали та внутрішні інструменти, які замінюють таблицю, що її всі бояться зачепити.",
+        intro:
+          "Вебзастосунок — це там, де живуть цікаві поломки: права доступу, дані, що мають лишатися коректними при одночасному редагуванні, інтеграції, які падають у найгірший момент. Я будую такі системи з бекендом на .NET і фронтендом на React або Next.js, де нудні частини — авторизація, валідація, логування, тести — є частиною роботи, а не окремою фазою «колись потім».",
+        includes: [
+          {
+            title: "Справжня авторизація й ролі",
+            body: "Нормальний вхід, сесії та права доступу, щоб звичайний користувач не дістався адмінських даних, підправивши URL.",
+          },
+          {
+            title: "Бекенд, який витримує",
+            body: "C# / .NET із Clean Architecture і CQRS, PostgreSQL під капотом. Бізнес-правила в одному місці, а не розмазані по інтерфейсу.",
+          },
+          {
+            title: "Інтерфейс, яким можна користуватися",
+            body: "React / Next.js, адаптивний, доступний з клавіатури, зі станами завантаження, порожнечі та помилки — трьома екранами, про які найчастіше забувають.",
+          },
+          {
+            title: "Інтеграції з тим, що вже працює",
+            body: "Платежі, CRM, пошта, сторонні API — під'єднані з повторними спробами й обробкою помилок, а не одним запитом і надією.",
+          },
+          {
+            title: "Спостережуваність",
+            body: "Структуровані логи й метрики, щоб о другій ночі відповідь була в дашборді, а не в припущеннях.",
+          },
+          {
+            title: "Тести там, де вони важать",
+            body: "Інтеграційні тести на реальній логіці й реальних даних, щоб зміна наступного кварталу тихо не зламала білінг.",
+          },
+        ],
+        faq: [
+          {
+            q: "Чим це відрізняється від сайту?",
+            a: "Сайт показує інформацію; застосунок виконує роботу — користувачі входять, дані змінюються, діють правила. Ця різниця проявляється в авторизації, цілісності даних і тестуванні, і саме там більшість зусиль.",
+          },
+          {
+            q: "Чи можете працювати з нашою наявною системою?",
+            a: "Зазвичай так. Можу побудувати новий застосунок над вашою базою чи API або додати сервіс поруч із наявним. Перший крок — прочитати те, що є, до будь-яких пропозицій.",
+          },
+          {
+            q: "Кому належить код і чи зможе наша команда його підхопити?",
+            a: "Код ваш. Це задокументовані .NET і TypeScript зі звичною структурою — розробник, який приєднається пізніше, розбереться без екскурсії від мене. Передача — частина роботи, а не послуга.",
+          },
+          {
+            q: "А якщо вимоги зміняться на півдорозі?",
+            a: "Зазвичай так і буває. Оскільки я випускаю щотижневими частинами, змінити курс рано — дешево. Обсяг переузгоджуємо письмово, коли зміна достатньо велика.",
+          },
+          {
+            q: "Чи займаєтесь хостингом і деплоєм?",
+            a: "Так — деплой на Docker, конфігурація середовищ і пайплайн, налаштовані у ваших акаунтах, щоб контроль лишався у вас.",
+          },
+        ],
+      },
+      "saas-development": {
+        navTitle: "Розробка SaaS",
+        title: "Розробка SaaS і MVP",
+        metaTitle: "Розробка SaaS — від ідеї до продукту, за який платять",
+        metaDescription:
+          "Розробка SaaS MVP: multi-tenant архітектура, підписки й білінг на .NET і Next.js — від інженера, який веде власний SaaS-продукт.",
+        heroSub:
+          "Від ідеї до живого продукту з реальними підписками — з multi-tenant фундаментом, від якого залежить, чи буде другий рік.",
+        intro:
+          "Я веду власний SaaS (Futura AI), тож це не теорія. Рішення, які болять згодом, ухвалюються в перші тижні: як ізольовані тенанти, як білінг пов'язаний із доступом, чи можуть дані одного клієнта колись з'явитися в акаунті іншого. Я роблю MVP невеликим, але структурованим, щоб зростання було додаванням функцій, а не переписуванням фундаменту.",
+        includes: [
+          {
+            title: "Multi-tenancy з першого дня",
+            body: "Ізоляція тенантів закладена на рівні даних, а не прикручена після того, як перший великий клієнт про неї запитав.",
+          },
+          {
+            title: "Підписки й білінг",
+            body: "Тарифи, тріали, апгрейди та невдалі платежі, пов'язані з тим, до чого користувач реально має доступ — включно з неприємними сценаріями.",
+          },
+          {
+            title: "Онбординг, який конвертує",
+            body: "Від реєстрації до першої реальної цінності за мінімум кроків. Завдання MVP — довести, що платитимуть, і саме онбординг це вирішує.",
+          },
+          {
+            title: "Адмінка для вас",
+            body: "Бачити тенантів, використання й стан підписок, не відкриваючи клієнт бази даних.",
+          },
+          {
+            title: "Інфраструктура на виріст",
+            body: "Docker, PostgreSQL, фонові задачі й кешування, налаштовані так, щоб друга тисяча користувачів не вимагала перебудови.",
+          },
+          {
+            title: "Обсяг, який доходить до запуску",
+            body: "Ріжемо список функцій до того, що доводить бізнес, запускаємо, а решту додаємо, коли реальні користувачі скажуть, що важливо.",
+          },
+        ],
+        faq: [
+          {
+            q: "Наскільки малим має бути MVP?",
+            a: "Достатньо малим, щоб запуститися за тижні, і достатньо повним, щоб за нього заплатили. Більшість провальних MVP завеликі, а не замалі — ріжемо агресивно й додаємо назад за реальним зворотним зв'язком.",
+          },
+          {
+            q: "Чому multi-tenancy важлива так рано?",
+            a: "Бо прикрутити її потім — це переписування. Коректна ізоляція тенантів на старті коштує трохи наперед і рятує проєкт згодом, особливо коли клієнт уперше поставить питання про безпеку.",
+          },
+          {
+            q: "Чи можете під'єднати платежі?",
+            a: "Так — підписковий білінг із тріалами, апгрейдами, скасуваннями та обробкою невдалих платежів, пов'язаний із доступом до функцій.",
+          },
+          {
+            q: "Ви справді таке будували?",
+            a: "Так — Futura AI, multi-tenant AI-чат для б'юті-салонів, живий на beautyfutura.com. Та сама архітектура, яку я побудував би вам.",
+          },
+          {
+            q: "Що відбувається після запуску?",
+            a: "Залишаюсь доступним, щоб будувати наступні функції, лагодити те, що виявить реальне використання, і тримати інфраструктуру здоровою — стільки, скільки це вам корисно.",
+          },
+        ],
+      },
+      "dotnet-development": {
+        navTitle: ".NET розробка",
+        title: "Розробка на .NET",
+        metaTitle: "Розробка на .NET — бекенди на C#, ASP.NET і EF Core",
+        metaDescription:
+          "Бекенд-розробка на .NET: ASP.NET API, EF Core і PostgreSQL, Clean Architecture і CQRS — від full-stack інженера, який робить і фронтенд.",
+        heroSub:
+          "API та бекенди на C# — побудовані так, як будують систему, що має пережити третій рік змін.",
+        intro:
+          ".NET — це те, що я беру, коли коректність важливіша за новизну: типізована мова, зріла платформа й інструменти, які ловлять проблеми на компіляції, а не в проді. Я будую API та сервіси з Clean Architecture і CQRS, EF Core над PostgreSQL і дисципліною, яка робить код безпечним для змін чужими руками.",
+        includes: [
+          {
+            title: "REST API, які задокументовані",
+            body: "Ендпоїнти ASP.NET з OpenAPI, типізованими відповідями й послідовним форматом помилок — фронтендер працює за документацією, не питаючи вас.",
+          },
+          {
+            title: "Clean Architecture і CQRS",
+            body: "Доменна логіка відокремлена від інфраструктури, команди — від запитів. Структура, що лишається читабельною, коли список функцій росте.",
+          },
+          {
+            title: "EF Core і PostgreSQL",
+            body: "Продумана схема, версіоновані міграції та запити, які не розсипаються, коли в таблицях з'являються реальні обсяги.",
+          },
+          {
+            title: "Передбачувана обробка помилок",
+            body: "Очікувані збої повертаються як результат, а не кидаються винятками, з problem details за стандартом на виході.",
+          },
+          {
+            title: "Інтеграційні тести на реальній інфраструктурі",
+            body: "Тести проти справжнього PostgreSQL у контейнері, щоб вони доводили роботу системи, а не узгодженість моків.",
+          },
+          {
+            title: "Фронтенд теж, якщо потрібно",
+            body: "Я роблю й частину на React / Next.js, тож між бекендом і UI немає щілини, де губиться відповідальність.",
+          },
+        ],
+        faq: [
+          {
+            q: "Чому .NET, а не Node.js?",
+            a: "Для бізнес-систем зі справжніми правилами над даними статична типізація та зріла платформа прибирають цілий клас помилок. Node добрий для багатьох задач — я написав про цей компроміс у журналі, замість вдавати, що щось завжди виграє.",
+          },
+          {
+            q: "Чи можете підхопити наявний .NET-проєкт?",
+            a: "Так. Оцінюю те, що є, обкладаю ризиковані місця тестами й логами, далі змінюю безпечно. Рятувальні роботи — звична для мене частина.",
+          },
+          {
+            q: "Яку версію .NET використовуєте?",
+            a: "Поточну LTS, на стабільних релізах, не на preview. Якщо у вас щось старіше, оновлення може бути частиною обсягу.",
+          },
+          {
+            q: "Чи пишете тести?",
+            a: "Так, спершу інтеграційні, проти реальної інфраструктури в контейнерах. In-memory підробки бази доводять надто мало, тож їх не використовую.",
+          },
+          {
+            q: "Чи можете працювати з нашою командою?",
+            a: "Так — за вашими домовленостями, вашим процесом рев'ю та у вашому репозиторії. Пишу код, що читається як той, який уже є.",
+          },
+        ],
+      },
+      "website-fixes": {
+        navTitle: "Доопрацювання",
+        title: "Доопрацювання та порятунок сайту",
+        metaTitle: "Доопрацювання сайту — полагодити, пришвидшити, підхопити проєкт",
+        metaDescription:
+          "Полагодити повільний чи зламаний сайт, доробити покинутий проєкт або підхопити код, який ніхто не наважується змінювати. Спершу оцінка й чесна відповідь.",
+        heroSub:
+          "Сайт гальмує, щось зламалося або розробник перестав відповідати. Скажу, що насправді не так, до розмов про переписування.",
+        intro:
+          "Більшість рятувальних робіт починаються однаково: колись працювало, хтось пішов, і тепер ніхто не хоче торкатися. Перший крок — оцінка: що є, що небезпечне, що можна врятувати. Іноді відповідь — кілька днів правок, а не переписування, і ви маєте це почути, навіть якщо переписування принесло б мені більше.",
+        includes: [
+          {
+            title: "Спершу чесна оцінка",
+            body: "Читаю код та інфраструктуру й кажу, що не так, скільки коштує полагодити і чи переписування справді кращий варіант.",
+          },
+          {
+            title: "Швидкість і Core Web Vitals",
+            body: "Знайти, що реально гальмує — зображення, блокуючі скрипти, відповідь сервера — і полагодити причини, а не ганятися за балом.",
+          },
+          {
+            title: "Зламані й покинуті проєкти",
+            body: "Доробити те, що хтось лишив недобудованим, або стабілізувати код, автор якого недосяжний.",
+          },
+          {
+            title: "Проблеми з SEO та індексацією",
+            body: "Сторінки, яких немає в Google, зламані редіректи й канонікали, занедбаний sitemap — технічні причини, чому зник трафік.",
+          },
+          {
+            title: "Безпека й оновлення залежностей",
+            body: "Застарілі пакети з відомими вразливостями, відкрита конфігурація, відсутні заголовки безпеки — приводяться до ладу свідомо.",
+          },
+          {
+            title: "Безпечний шлях далі",
+            body: "Тести й логування навколо крихких місць, щоб наступна зміна не повернула ту саму поломку.",
+          },
+        ],
+        faq: [
+          {
+            q: "Чи можете полагодити сайт, який робили не ви?",
+            a: "Так — це більшість такої роботи. Спершу читаю те, що є; оцінка і є способом обом зрозуміти, що доцільніше — лагодити чи переробляти.",
+          },
+          {
+            q: "А якщо попередній розробник зник?",
+            a: "Звична ситуація, робоча, поки ви контролюєте домен, хостинг і репозиторій. Якщо доступів немає — їх відновлення буде першим, що владнаємо.",
+          },
+          {
+            q: "Як швидко можна полагодити термінове?",
+            a: "Сайт, який лежить або серйозно зламаний, дивлюся першим. Дрібні правки часто виходять того ж дня; далі залежить від того, що покаже оцінка.",
+          },
+          {
+            q: "Чи скажете, якщо лагодити не варто?",
+            a: "Так. Якщо латати дорожче, ніж зробити наново, скажу це й поясню чому — навіть коли для мене це менше роботи.",
+          },
+          {
+            q: "Чи берете постійну підтримку?",
+            a: "Так, якщо потрібно — оновлення, моніторинг і зміни на постійній основі. Без прив'язки й без договору, з якого доводиться вибиратися.",
+          },
+        ],
+      },
+    },
+  },
+
   journal: {
     title: "Журнал",
     intro:
@@ -767,6 +1383,313 @@ const ru: Dictionary = {
     ctaTitle: "Есть проект на примете?",
     ctaBody:
       "Расскажите, что вы строите и где застряли. Обычно отвечаю в течение нескольких часов.",
+  },
+
+  landings: {
+    indexTitle: "Выберите, что вам нужно",
+    indexSub:
+      "Каждое направление — отдельный разговор с отдельным объёмом. Начните с того, что ближе к вашей ситуации.",
+    includesTitle: "Что входит",
+    processTitle: "Как мы будем работать",
+    casesTitle: "Смежные работы",
+    faqTitle: "Что спрашивают клиенты",
+    pages: {
+      "website-development": {
+        navTitle: "Создание сайтов",
+        title: "Создание сайтов под ключ",
+        metaTitle: "Создание сайтов под ключ — разработка сайта, готового ранжироваться",
+        metaDescription:
+          "Создание сайтов под ключ от full-stack инженера: быстрые, многоязычные, готовые к SEO сайты на .NET и Next.js. Фиксированный объём письменно, оплата после запуска.",
+        heroSub:
+          "Сайт на собственном домене, который быстро грузится, нормально читается с телефона и построен так, чтобы Google мог его проиндексировать. Не шаблон с вашим логотипом.",
+        intro:
+          "Большинство бизнес-сайтов теряют клиентов в одних и тех же трёх местах: долго грузятся, ломаются на мобильном, и поисковики не видят половины содержимого. Я строю сайт так, как его строил бы инженер — с серверным рендерингом, доступностью, многоязычностью там, где она нужна — чтобы то, за что вы заплатили, работало и через год.",
+        includes: [
+          {
+            title: "Дизайн под ваш бизнес",
+            body: "Структура вокруг того, что вы реально продаёте и кто это покупает, а не тема, под которую приходится подгонять контент.",
+          },
+          {
+            title: "Построено, чтобы индексироваться",
+            body: "Серверный рендеринг, чистая структура URL, микроразметка, sitemap и hreflang — технический фундамент, без которого о ранжировании говорить рано.",
+          },
+          {
+            title: "Быстро на реальном телефоне",
+            body: "Оптимизированные изображения, минимум JavaScript, Core Web Vitals в зелёной зоне — проверено на среднем железе, а не только на быстром ноутбуке.",
+          },
+          {
+            title: "Многоязычность, если нужна",
+            body: "Два-три языка с корректным hreflang и отдельными URL, чтобы каждая версия ранжировалась на своём рынке.",
+          },
+          {
+            title: "Контент, который вы правите сами",
+            body: "Тексты и изображения лежат там, где вы можете их изменить. Ежедневные правки не должны требовать разработчика.",
+          },
+          {
+            title: "Аналитика с первого дня",
+            body: "Вы видите, откуда приходят посетители и что они делают, поэтому решения по сайту опираются на цифры, а не на догадки.",
+          },
+        ],
+        faq: [
+          {
+            q: "Сколько времени занимает создание сайта?",
+            a: "Сфокусированный бизнес-сайт — обычно пару недель от согласованного объёма до запуска. Более крупные сайты с множеством страниц или языков дольше — и вы видите готовые страницы каждую неделю, а не ждёте до конца.",
+          },
+          {
+            q: "Будет ли сайт ранжироваться в Google?",
+            a: "Я делаю технический фундамент, который делает ранжирование возможным — рендеринг, структуру, скорость, микроразметку, sitemap. Само ранжирование зависит ещё и от вашего контента и возраста домена, и я скажу об этом прямо, а не буду обещать позиции.",
+          },
+          {
+            q: "Смогу ли я сам менять тексты?",
+            a: "Да. Контент отделён от кода, поэтому изменить текст или картинку можно без деплоя и без разработчика.",
+          },
+          {
+            q: "Принадлежит ли сайт мне?",
+            a: "Полностью. Ваш домен, ваш хостинг, ваш код. Ничего не привязано ко мне — вы можете передать его другому разработчику в любой момент.",
+          },
+          {
+            q: "А что после запуска?",
+            a: "Остаюсь доступным для обновлений, SEO и изменений столько, сколько нужно. Без обязательств и без договора поддержки, в который вас загоняют.",
+          },
+        ],
+      },
+      "web-app-development": {
+        navTitle: "Веб-приложения",
+        title: "Разработка веб-приложений",
+        metaTitle: "Разработка веб-приложений — порталы, дашборды, внутренние системы",
+        metaDescription:
+          "Разработка веб-приложений с бэкендом на .NET и фронтендом на React / Next.js: дашборды, клиентские порталы и внутренние инструменты с настоящей авторизацией.",
+        heroSub:
+          "Дашборды, клиентские порталы и внутренние инструменты, которые заменяют таблицу, которую все боятся тронуть.",
+        intro:
+          "Веб-приложение — это там, где живут интересные поломки: права доступа, данные, которые должны оставаться корректными при одновременном редактировании, интеграции, падающие в худший момент. Я строю такие системы с бэкендом на .NET и фронтендом на React или Next.js, где скучные части — авторизация, валидация, логирование, тесты — часть работы, а не отдельная фаза «когда-нибудь потом».",
+        includes: [
+          {
+            title: "Настоящая авторизация и роли",
+            body: "Нормальный вход, сессии и права доступа, чтобы обычный пользователь не добрался до админских данных, поправив URL.",
+          },
+          {
+            title: "Бэкенд, который выдерживает",
+            body: "C# / .NET с Clean Architecture и CQRS, PostgreSQL под капотом. Бизнес-правила в одном месте, а не размазаны по интерфейсу.",
+          },
+          {
+            title: "Интерфейс, которым можно пользоваться",
+            body: "React / Next.js, адаптивный, доступный с клавиатуры, с состояниями загрузки, пустоты и ошибки — тремя экранами, о которых чаще всего забывают.",
+          },
+          {
+            title: "Интеграции с тем, что уже работает",
+            body: "Платежи, CRM, почта, сторонние API — подключены с повторными попытками и обработкой ошибок, а не одним запросом и надеждой.",
+          },
+          {
+            title: "Наблюдаемость",
+            body: "Структурированные логи и метрики, чтобы в два часа ночи ответ был в дашборде, а не в предположениях.",
+          },
+          {
+            title: "Тесты там, где они важны",
+            body: "Интеграционные тесты по реальной логике и реальным данным, чтобы изменение в следующем квартале тихо не сломало биллинг.",
+          },
+        ],
+        faq: [
+          {
+            q: "Чем это отличается от сайта?",
+            a: "Сайт показывает информацию; приложение выполняет работу — пользователи входят, данные меняются, действуют правила. Эта разница проявляется в авторизации, целостности данных и тестировании, и там же большая часть усилий.",
+          },
+          {
+            q: "Можете работать с нашей существующей системой?",
+            a: "Обычно да. Могу построить новое приложение над вашей базой или API либо добавить сервис рядом с существующим. Первый шаг — прочитать то, что есть, до любых предложений.",
+          },
+          {
+            q: "Кому принадлежит код и сможет ли наша команда его подхватить?",
+            a: "Код ваш. Это задокументированные .NET и TypeScript с привычной структурой — разработчик, пришедший позже, разберётся без экскурсии от меня. Передача — часть работы, а не одолжение.",
+          },
+          {
+            q: "А если требования изменятся на полпути?",
+            a: "Обычно так и бывает. Поскольку я выпускаю еженедельными частями, сменить курс рано — дёшево. Объём переcогласуем письменно, когда изменение достаточно крупное.",
+          },
+          {
+            q: "Занимаетесь ли хостингом и деплоем?",
+            a: "Да — деплой на Docker, конфигурация окружений и пайплайн, настроенные в ваших аккаунтах, чтобы контроль оставался у вас.",
+          },
+        ],
+      },
+      "saas-development": {
+        navTitle: "Разработка SaaS",
+        title: "Разработка SaaS и MVP",
+        metaTitle: "Разработка SaaS — от идеи до продукта, за который платят",
+        metaDescription:
+          "Разработка SaaS MVP: multi-tenant архитектура, подписки и биллинг на .NET и Next.js — от инженера, который ведёт собственный SaaS-продукт.",
+        heroSub:
+          "От идеи до живого продукта с реальными подписками — с multi-tenant фундаментом, от которого зависит, будет ли второй год.",
+        intro:
+          "Я веду собственный SaaS (Futura AI), так что это не теория. Решения, которые болят потом, принимаются в первые недели: как изолированы тенанты, как биллинг связан с доступом, могут ли данные одного клиента когда-нибудь появиться в аккаунте другого. Я делаю MVP небольшим, но структурированным, чтобы рост был добавлением функций, а не переписыванием фундамента.",
+        includes: [
+          {
+            title: "Multi-tenancy с первого дня",
+            body: "Изоляция тенантов заложена на уровне данных, а не прикручена после того, как первый крупный клиент о ней спросил.",
+          },
+          {
+            title: "Подписки и биллинг",
+            body: "Тарифы, триалы, апгрейды и неудавшиеся платежи, связанные с тем, к чему пользователь реально имеет доступ — включая неприятные сценарии.",
+          },
+          {
+            title: "Онбординг, который конвертит",
+            body: "От регистрации до первой реальной ценности за минимум шагов. Задача MVP — доказать, что будут платить, и именно онбординг это решает.",
+          },
+          {
+            title: "Админка для вас",
+            body: "Видеть тенантов, использование и состояние подписок, не открывая клиент базы данных.",
+          },
+          {
+            title: "Инфраструктура на вырост",
+            body: "Docker, PostgreSQL, фоновые задачи и кеширование, настроенные так, чтобы вторая тысяча пользователей не потребовала перестройки.",
+          },
+          {
+            title: "Объём, который доходит до запуска",
+            body: "Режем список функций до того, что доказывает бизнес, запускаем, а остальное добавляем, когда реальные пользователи скажут, что важно.",
+          },
+        ],
+        faq: [
+          {
+            q: "Насколько маленьким должен быть MVP?",
+            a: "Достаточно маленьким, чтобы запуститься за недели, и достаточно полным, чтобы за него заплатили. Большинство провальных MVP слишком большие, а не слишком маленькие — режем агрессивно и добавляем обратно по реальной обратной связи.",
+          },
+          {
+            q: "Почему multi-tenancy важна так рано?",
+            a: "Потому что прикрутить её потом — это переписывание. Корректная изоляция тенантов на старте стоит немного вперёд и спасает проект позже, особенно когда клиент впервые задаст вопрос о безопасности.",
+          },
+          {
+            q: "Можете подключить платежи?",
+            a: "Да — подписочный биллинг с триалами, апгрейдами, отменами и обработкой неудавшихся платежей, связанный с доступом к функциям.",
+          },
+          {
+            q: "Вы действительно такое строили?",
+            a: "Да — Futura AI, multi-tenant AI-чат для бьюти-салонов, живой на beautyfutura.com. Та же архитектура, которую я построил бы вам.",
+          },
+          {
+            q: "Что происходит после запуска?",
+            a: "Остаюсь доступным, чтобы строить следующие функции, чинить то, что вскроет реальное использование, и держать инфраструктуру здоровой — столько, сколько это вам полезно.",
+          },
+        ],
+      },
+      "dotnet-development": {
+        navTitle: ".NET разработка",
+        title: "Разработка на .NET",
+        metaTitle: "Разработка на .NET — бэкенды на C#, ASP.NET и EF Core",
+        metaDescription:
+          "Бэкенд-разработка на .NET: ASP.NET API, EF Core и PostgreSQL, Clean Architecture и CQRS — от full-stack инженера, который делает и фронтенд.",
+        heroSub:
+          "API и бэкенды на C# — построенные так, как строят систему, которая должна пережить третий год изменений.",
+        intro:
+          ".NET — это то, что я беру, когда корректность важнее новизны: типизированный язык, зрелая платформа и инструменты, ловящие проблемы на компиляции, а не в проде. Я строю API и сервисы с Clean Architecture и CQRS, EF Core над PostgreSQL и дисциплиной, которая делает код безопасным для изменений чужими руками.",
+        includes: [
+          {
+            title: "REST API, которые задокументированы",
+            body: "Эндпоинты ASP.NET с OpenAPI, типизированными ответами и последовательным форматом ошибок — фронтендер работает по документации, не спрашивая вас.",
+          },
+          {
+            title: "Clean Architecture и CQRS",
+            body: "Доменная логика отделена от инфраструктуры, команды — от запросов. Структура, остающаяся читаемой, когда список функций растёт.",
+          },
+          {
+            title: "EF Core и PostgreSQL",
+            body: "Продуманная схема, версионированные миграции и запросы, которые не разваливаются, когда в таблицах появляются реальные объёмы.",
+          },
+          {
+            title: "Предсказуемая обработка ошибок",
+            body: "Ожидаемые сбои возвращаются как результат, а не бросаются исключениями, с problem details по стандарту на выходе.",
+          },
+          {
+            title: "Интеграционные тесты на реальной инфраструктуре",
+            body: "Тесты против настоящего PostgreSQL в контейнере, чтобы они доказывали работу системы, а не согласованность моков.",
+          },
+          {
+            title: "Фронтенд тоже, если нужно",
+            body: "Я делаю и часть на React / Next.js, поэтому между бэкендом и UI нет щели, где теряется ответственность.",
+          },
+        ],
+        faq: [
+          {
+            q: "Почему .NET, а не Node.js?",
+            a: "Для бизнес-систем с настоящими правилами над данными статическая типизация и зрелая платформа убирают целый класс ошибок. Node хорош для многих задач — я написал об этом компромиссе в журнале, вместо того чтобы делать вид, будто что-то всегда выигрывает.",
+          },
+          {
+            q: "Можете подхватить существующий .NET-проект?",
+            a: "Да. Оцениваю то, что есть, обкладываю рискованные места тестами и логами, дальше меняю безопасно. Спасательные работы — обычная для меня часть.",
+          },
+          {
+            q: "Какую версию .NET используете?",
+            a: "Текущую LTS, на стабильных релизах, не на preview. Если у вас что-то старее, обновление может быть частью объёма.",
+          },
+          {
+            q: "Пишете ли тесты?",
+            a: "Да, сначала интеграционные, против реальной инфраструктуры в контейнерах. In-memory подделки базы доказывают слишком мало, поэтому их не использую.",
+          },
+          {
+            q: "Можете работать с нашей командой?",
+            a: "Да — по вашим договорённостям, вашему процессу ревью и в вашем репозитории. Пишу код, который читается как тот, что уже есть.",
+          },
+        ],
+      },
+      "website-fixes": {
+        navTitle: "Доработка сайта",
+        title: "Доработка и спасение сайта",
+        metaTitle: "Доработка сайта — починить, ускорить, подхватить проект",
+        metaDescription:
+          "Починить медленный или сломанный сайт, доделать заброшенный проект или подхватить код, который никто не решается менять. Сначала оценка и честный ответ.",
+        heroSub:
+          "Сайт тормозит, что-то сломалось или разработчик перестал отвечать. Скажу, что на самом деле не так, до разговоров о переписывании.",
+        intro:
+          "Большинство спасательных работ начинаются одинаково: когда-то работало, кто-то ушёл, и теперь никто не хочет трогать. Первый шаг — оценка: что есть, что опасно, что можно спасти. Иногда ответ — несколько дней правок, а не переписывание, и вы должны это услышать, даже если переписывание принесло бы мне больше.",
+        includes: [
+          {
+            title: "Сначала честная оценка",
+            body: "Читаю код и инфраструктуру и говорю, что не так, сколько стоит починить и действительно ли переписывание — лучший вариант.",
+          },
+          {
+            title: "Скорость и Core Web Vitals",
+            body: "Найти, что реально тормозит — изображения, блокирующие скрипты, ответ сервера — и починить причины, а не гнаться за баллом.",
+          },
+          {
+            title: "Сломанные и заброшенные проекты",
+            body: "Доделать то, что кто-то оставил недостроенным, или стабилизировать код, автор которого недоступен.",
+          },
+          {
+            title: "Проблемы с SEO и индексацией",
+            body: "Страницы, которых нет в Google, сломанные редиректы и каноникалы, заброшенный sitemap — технические причины, почему пропал трафик.",
+          },
+          {
+            title: "Безопасность и обновление зависимостей",
+            body: "Устаревшие пакеты с известными уязвимостями, открытая конфигурация, отсутствующие заголовки безопасности — приводятся в порядок осознанно.",
+          },
+          {
+            title: "Безопасный путь дальше",
+            body: "Тесты и логирование вокруг хрупких мест, чтобы следующее изменение не вернуло ту же поломку.",
+          },
+        ],
+        faq: [
+          {
+            q: "Можете починить сайт, который делали не вы?",
+            a: "Да — это большая часть такой работы. Сначала читаю то, что есть; оценка и есть способ обоим понять, что целесообразнее — чинить или переделывать.",
+          },
+          {
+            q: "А если предыдущий разработчик пропал?",
+            a: "Обычная ситуация, рабочая, пока вы контролируете домен, хостинг и репозиторий. Если доступов нет — их восстановление будет первым, что уладим.",
+          },
+          {
+            q: "Как быстро можно починить срочное?",
+            a: "Сайт, который лежит или серьёзно сломан, смотрю первым. Мелкие правки часто выходят в тот же день; дальше зависит от того, что покажет оценка.",
+          },
+          {
+            q: "Скажете ли, если чинить не стоит?",
+            a: "Да. Если латать дороже, чем сделать заново, скажу это и объясню почему — даже когда для меня это меньше работы.",
+          },
+          {
+            q: "Берёте ли постоянную поддержку?",
+            a: "Да, если нужно — обновления, мониторинг и изменения на постоянной основе. Без привязки и без договора, из которого приходится выбираться.",
+          },
+        ],
+      },
+    },
   },
 
   journal: {

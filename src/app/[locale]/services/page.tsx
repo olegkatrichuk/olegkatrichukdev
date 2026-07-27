@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { site } from "@/lib/site";
 import { isLocale, lh, localeAlternates, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionaries";
@@ -13,6 +14,7 @@ import {
   faqPageSchema,
   professionalServiceSchema,
 } from "@/lib/jsonld";
+import { landingSlugs } from "./[slug]/page";
 
 export async function generateMetadata({
   params,
@@ -100,6 +102,40 @@ export default async function ServicesPage({
                     {item.body}
                   </p>
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-border py-16 sm:py-24">
+        <Container>
+          <Reveal>
+            <h2 className="font-serif text-2xl font-medium tracking-tight sm:text-3xl">
+              {t.landings.indexTitle}
+            </h2>
+            <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+              {t.landings.indexSub}
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {landingSlugs.map((slug, i) => (
+              <Reveal key={slug} delay={i * 0.05}>
+                <Link
+                  href={lh(l, `/services/${slug}`)}
+                  className="group flex h-full flex-col rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
+                >
+                  <h3 className="font-semibold tracking-tight transition-colors group-hover:text-accent">
+                    {t.landings.pages[slug].navTitle}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/75">
+                    {t.landings.pages[slug].heroSub}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-accent">
+                    {t.landings.pages[slug].title}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
               </Reveal>
             ))}
           </div>

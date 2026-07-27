@@ -189,6 +189,43 @@ export function professionalServiceSchema(
   };
 }
 
+// A single commercial landing page under /services/[slug]. Unlike the broad
+// ProfessionalService node, this describes one concrete service so each
+// landing has its own entity rather than all of them sharing one.
+export function serviceSchema(
+  locale: Locale,
+  s: { slug: string; title: string; metaDescription: string; includes: { title: string; body: string }[] },
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.title,
+    description: s.metaDescription,
+    url: `${site.url}/${locale}/services/${s.slug}`,
+    serviceType: s.title,
+    provider: { "@id": PERSON_ID },
+    areaServed: [
+      { "@type": "Country", name: "Ukraine" },
+      { "@type": "Place", name: "CIS" },
+      { "@type": "Place", name: "European Union" },
+      { "@type": "Country", name: "United States" },
+    ],
+    availableLanguage: ["English", "Ukrainian", "Russian"],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: s.title,
+      itemListElement: s.includes.map((i) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: i.title,
+          description: i.body,
+        },
+      })),
+    },
+  };
+}
+
 export function caseStudySchema(c: CaseStudyMeta, locale: Locale) {
   const image = c.coverImage
     ? `${site.url}${c.coverImage}`
