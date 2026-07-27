@@ -103,6 +103,10 @@ The win isn't in any single handler — it's in what *doesn't* happen later:
   code; only real exceptions reach `Error`. Your alerting can finally
   trust that an `Error`-level log means something is actually wrong.
 
+This is part of what I mean by [.NET
+development](/services/dotnet-development): not the language itself, but the
+discipline you write it with.
+
 The cost is a `Result<T>` type and the discipline to return it. The
 payoff is a codebase where the type system, not tribal knowledge, tells
 you how each operation can fail. On a solo-built project that nobody else
